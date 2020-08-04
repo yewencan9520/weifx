@@ -6,6 +6,7 @@ import com.abc.platform.bean.ResultOv;
 import com.abc.platform.service.AddDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,9 +20,16 @@ public class AddController {
 
     @RequestMapping("save")
     @ResponseBody
-    public JsonResult saveData(ResultOv resultOv){
+    public JsonResult saveData(@RequestBody ResultOv resultOv){
         JsonResult jsonResult = new JsonResult();
-//        productDaoService.insertData(copy_form);
+        try {
+            addDaoService.insertData(resultOv);
+            jsonResult.setCode(0);
+            jsonResult.setObj("新增成功");
+        } catch (Exception e) {
+            jsonResult.setCode(1);
+            jsonResult.setObj("新增失败，请检查！");
+        }
         return jsonResult;
     }
 

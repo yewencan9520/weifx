@@ -1,34 +1,64 @@
 package com.abc.platform.service.Impl;
 
 import com.abc.platform.bean.JsonResult;
+import com.abc.platform.bean.ResultOv;
+import com.abc.platform.bean.WxbGood;
+import com.abc.platform.bean.WxbGoodSku2;
+import com.abc.platform.dao.AddDao;
 import com.abc.platform.service.AddDaoService;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
+import java.util.Random;
 
 @Service
 public class AddDaoServiceImpl implements AddDaoService {
 
-    @Override
-    public int insertData() {
+    @Autowired
+    private AddDao addDao;
 
-//        String title = copy_form.getSku_title().replace("|", "");
-//        copy_form.setSku_title(title);
-//        String cost = copy_form.getSku_cost().replace("|", "");
-//        copy_form.setSku_cost(cost);
-//        String pmoney = copy_form.getSku_pmoney().replace("|", "");
-//        copy_form.setSku_pmoney(pmoney);
-//        String price = copy_form.getSku_price().replace("|", "");
-//        copy_form.setSku_price(price);
-//
-//        int size = productDao.insertProduct(copy_form);
-        return 1;
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void insertData(ResultOv resultOv) throws Exception{
+        logs(resultOv);
+        String gId = String.valueOf(new Random().nextInt(100000000));
+        WxbGood wxbGood = resultOv.getWxbGood();
+        wxbGood.setGoodsId(gId);
+        insertAddProduct(wxbGood);
+        insertAddSku(resultOv.getSku2List(),wxbGood.getGoodsId());
     }
 
+    /**
+     * 新增商品信息
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void insertAddProduct(WxbGood wxbGood){
+        addDao.insertAddProduct(wxbGood);
+    }
+
+    /**
+     * 新增套餐信息
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void insertAddSku(List<WxbGoodSku2> sku2List,String goodId){
+        addDao.insertAddSku(sku2List,goodId);
+    }
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void logs(Object obj){
+
+    }
+
+    /**
+     * 新增图片到 nginx
+     */
     @Override
     public JsonResult insertPic(MultipartFile file) {
         JsonResult jsonResult= new JsonResult();
@@ -64,4 +94,15 @@ public class AddDaoServiceImpl implements AddDaoService {
         return jsonResult;
     }
 
+
+    //        String title = copy_form.getSku_title().replace("|", "");
+//        copy_form.setSku_title(title);
+//        String cost = copy_form.getSku_cost().replace("|", "");
+//        copy_form.setSku_cost(cost);
+//        String pmoney = copy_form.getSku_pmoney().replace("|", "");
+//        copy_form.setSku_pmoney(pmoney);
+//        String price = copy_form.getSku_price().replace("|", "");
+//        copy_form.setSku_price(price);
+//
+//        int size = productDao.insertProduct(copy_form);
 }

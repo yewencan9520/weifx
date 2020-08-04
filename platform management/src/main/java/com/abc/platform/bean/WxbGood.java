@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class WxbGood {
 
-  private long goodsId;
+  private String goodsId;
   private String goodsName;
   private String customerId;
   private String goodsPic1;
