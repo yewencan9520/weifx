@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abc.weifx.dao.AddDao">
+
+    <insert id="insertProduct">
+        insert into wxb_Good
+        (good_name,promote_desc,sku_title,sku_cost,sku_price,sku_pmoney,copy_desc,forward_link,order_no,sell_num,tags,good_pic1,good_pic2,good_pic3)
+        values (#{good_name},#{promote_desc},#{sku_title},#{sku_cost},
+        #{sku_price},#{sku_pmoney},#{copy_desc},#{forward_link},
+        #{order_no},#{sell_num},#{tags},#{good_pic1},#{good_pic2},#{good_pic3});
+    </insert>
+
+
+    <resultMap id="rm" type="com.abc.weifx.bean.WxbGood">
+        <result property="good_name" column="good_name"></result>
+        <result property="good_pic1" column="good_pic1"></result>
+        <result property="sku_price" column="sku_price"></result>
+    </resultMap>
+    <select id="findAllProduct" resultMap="rm">
+        select * from wxb_good
+    </select>
+
+</mapper>
