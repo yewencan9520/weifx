@@ -13,6 +13,7 @@ public class TreeNodeBean {
 
     private String text;
     private String href;
+    private State state;
 
     private List<TreeNodeBean> nodes;
 
@@ -22,4 +23,5 @@ public class TreeNodeBean {
         }
         return nodes;
     }
+
 }

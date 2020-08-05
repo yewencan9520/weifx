@@ -26,4 +26,9 @@ public class PageController {
         return "goods_add";
     }
 
+    @RequestMapping("role")
+    public String toRole(){
+        return "role";
+    }
+
 }
