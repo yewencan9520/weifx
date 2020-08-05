@@ -32,15 +32,15 @@ public class AddDaoServiceImpl implements AddDaoService {
         String gId = String.valueOf(new Random().nextInt(100000000));
         WxbGood wxbGood = resultOv.getWxbGood();
         wxbGood.setGoodsId(gId);
-        insertAddProduct(wxbGood);
-        insertAddSku(resultOv.getSku2List(),wxbGood.getGoodsId());
+        AddProduct(wxbGood);
+        AddSku(resultOv.getSku2List(),wxbGood.getGoodsId());
     }
 
     /**
      * 新增商品信息
      */
     @Transactional(propagation = Propagation.REQUIRED)
-    public void insertAddProduct(WxbGood wxbGood){
+    public void AddProduct(WxbGood wxbGood){
         addDao.insertAddProduct(wxbGood);
     }
 
@@ -48,8 +48,8 @@ public class AddDaoServiceImpl implements AddDaoService {
      * 新增套餐信息
      */
     @Transactional(propagation = Propagation.REQUIRED)
-    public void insertAddSku(List<WxbGoodSku2> sku2List,String goodId){
-        addDao.insertAddSku(sku2List,goodId);
+    public void AddSku(List<WxbGoodSku2> sku2List,String goodsId){
+        addDao.insertAddSku(sku2List,goodsId);
     }
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void logs(Object obj){

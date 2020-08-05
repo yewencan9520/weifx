@@ -284,6 +284,7 @@ function insertRowsc(obj, k) {
 	var row = obj.insertRow(rowsnumber);
 	row.align = 'left';
 	var idstr="";
+	var skuId="sku"+new Date().getTime();
 	for (var i = 0; i < cellsnumber; i++) {
 		row.id = k;
 		cell = row.insertCell(i);
@@ -293,10 +294,15 @@ function insertRowsc(obj, k) {
 		if(i==2)idstr = "skuPrice";
 		if(i==3)idstr = "skuPmoney";
 		if(i==4)idstr = "serviceMoney";
+		// if(i!=0){
+		//    cell.innerHTML = '<input id="'+idstr+'" onkeyup="checkVal(this);" name="'+idstr+'" style="width:200px" type="text" value="" />';
+		// }else{
+		//    cell.innerHTML = '<input id="'+idstr+'" name="'+idstr+'" type="text" style="width:200px" value="" />';
+		// }
 		if(i!=0){
-		   cell.innerHTML = '<input id="'+idstr+'" onkeyup="checkVal(this);" name="'+idstr+'" style="width:200px" type="text" value="" />';
+			cell.innerHTML = '<input id="'+idstr+'" onkeyup="checkVal(this);" name="'+idstr+'" style="width:200px" type="text" value="" />';
 		}else{
-		   cell.innerHTML = '<input id="'+idstr+'" name="'+idstr+'" type="text" style="width:200px" value="" />';
+			cell.innerHTML = '<input name="skuId" style="width:200px" type="hidden" value="'+skuId+'" />'+'<input id="'+idstr+'" name="'+idstr+'" type="text" style="width:200px" value="" />';
 		}
 		//alert(cell.innerHTML);
 	

@@ -7,30 +7,16 @@
     <link href="css/default.css" rel="stylesheet" id="lhgdialoglink">
     <title>商品管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- head start-->
-<!--    <link rel="shortcut icon" href="http://localhost:8081/wxb/images/favicon.ico">-->
-<!--    <link rel="icon" type="image/gif" href="http://localhost:8081/wxb/images/favicon.gif">-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <!--    &lt;!&ndash;[if IE 7]>-->
-    <!--    <link rel="stylesheet" href="/customer/assets/css/font-awesome-ie7.min.css"/>-->
-    <!--    <![endif]&ndash;&gt;-->
-    <link rel="stylesheet" href="css/font.css">
-    <link rel="stylesheet" href="css/ace.min.css">
+<!--    <link rel="stylesheet" href="css/font-awesome.min.css">-->
+<!--    <link rel="stylesheet" href="css/font.css">-->
+<!--    <link rel="stylesheet" href="css/ace.min.css">-->
     <link rel="stylesheet" href="css/ace-rtl.min.css">
     <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="css/jquery.gritter.css">
-    <!--    &lt;!&ndash;[if lte IE 8]>-->
-    <!--    <link rel="stylesheet" href="ace-ie.min.css"/>-->
-    <!--    <![endif]&ndash;&gt;-->
     <link type="text/css" rel="stylesheet" href="css/public.css">
-
     <script type="text/javascript" src="js/ace-extra.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-    <!--    &lt;!&ndash;[if lt IE 9]>-->
-    <!--    <script src="/customer/assets/js/html5shiv.js"></script>-->
-    <!--    <script src="/customer/assets/js/respond.min.js"></script>-->
-    <!--    <![endif]&ndash;&gt;-->
     <!-- 系统共用js文件 -->
     <link rel="stylesheet" type="text/css" href="css/ymPrompt.css">
     <script type="text/javascript" src="js/ymPrompt.js"></script>
@@ -38,7 +24,6 @@
     <script type="text/javascript" src="js/publics.js"></script>
     <script type="text/javascript" src="js/table.js"></script>
     <script type="text/javascript" src="js/vdata.js"></script>
-    <!-- head over-->
     <link href="css/WdatePicker.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -764,8 +749,6 @@
             skuArray.push(skuJson);
         }
 
-        console.log(JSON.stringify(skuArray));
-
         var resultOv = {"wxbGood":{"goodsName":goodsName,"typeId":typeId,"goodsPic1":goodsImages1,
                     "goodsPic2":goodsImages2,"goodsPic3":goodsImages3,"orderNo":orderNo,
                     "sellNum":sellNum,"promoteDesc":promoteDesc},"sku2List":skuArray};
@@ -777,7 +760,13 @@
             dataType:"json",
             contentType:"application/json",
             success:function(data){
-                console.log(data);
+                if(data.code=0){
+                    alert(data.obj)
+                    window.location.href='page/goods_info'
+                }else{
+                    alert(data.obj)
+                }
+
             }
         });
     }

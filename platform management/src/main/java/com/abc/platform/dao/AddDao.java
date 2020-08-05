@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface AddDao {
 
-    int insertAddProduct(WxbGood wxbGood);
+    void insertAddProduct(WxbGood wxbGood);
 
-    int insertAddSku(@Param("sku2List") List<WxbGoodSku2> sku2List, @Param("goodsId") String goodsId);
+    void insertAddSku(@Param("list") List<WxbGoodSku2> list, @Param("goodsId") String goodsId);
 
 
 }

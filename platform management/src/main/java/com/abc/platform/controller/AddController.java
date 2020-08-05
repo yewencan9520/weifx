@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-
 @Controller
 public class AddController {
 
@@ -39,5 +38,4 @@ public class AddController {
         JsonResult jsonResults = addDaoService.insertPic(file);
         return jsonResults;
     }
-
 }
