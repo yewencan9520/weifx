@@ -1,13 +1,17 @@
 package com.abc.platform;
 
+import com.abc.platform.bean.SysRole;
 import com.abc.platform.bean.UserInfo;
 import com.abc.platform.bean.WxbGood;
 import com.abc.platform.dao.AddDao;
+import com.abc.platform.dao.RoleDao;
 import com.abc.platform.dao.UserDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
+import java.util.List;
 import java.util.Random;
 
 @SpringBootTest
@@ -40,6 +44,17 @@ class PlatformApplicationTests {
         wxbGood.setGoodsPic3("test3");
         System.out.println(wxbGood);
         addDao.insertAddProduct(wxbGood);
+
+    }
+    @Resource
+    private RoleDao roleDao;
+    @Test
+    public void findAllRole(){
+        List<SysRole> rolePage = roleDao.findRolePage();
+        for (SysRole sysRole : rolePage) {
+            System.out.println("===============================");
+            System.out.println(sysRole);
+        }
 
     }
 

@@ -15,9 +15,6 @@ xmlns="http://www.w3.org/1999/xhtml" -->
         //-->
     </script>
 
-<!--    <link rel="shortcut icon" href="https://javen666.com/wxb/wxb/images/favicon.ico">-->
-<!--    <link rel="icon" type="image/gif" href="https://javen666.com/wxb/wxb/images/favicon.gif">-->
-
     <!-- 树组件start -->
     <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
     <link rel="stylesheet" href="css/zTreeStyle.css" type="text/css">
@@ -35,99 +32,12 @@ xmlns="http://www.w3.org/1999/xhtml" -->
     <link href="css/WdatePicker(1).css" rel="stylesheet" type="text/css">
 
 
-<!--    <link href="css/default.css" rel="stylesheet" type="text/css">-->
     <script src="css/framework.js"></script>
     <title>角色信息管理</title>
-<!--    <script type="text/javascript">-->
-<!--        function add() {-->
-<!--            var url = "user!addRole.ct";-->
-<!--            showWindow(url, null, 355, 240, "增加角色参数", loadNowPage, true);-->
-<!--        }-->
-
-<!--        function edit() {-->
-<!--            var arr = DataGrid.getSelectedValue("dg1");-->
-<!--            if (arr == null || arr.length == 0) {-->
-<!--                Exceptalert("请先选择要修改的数据！", null, true);-->
-<!--                return;-->
-<!--            }-->
-
-<!--            if (arr.length > 1) {-->
-<!--                Exceptalert("对不起！不能进行批量更新操作！", null, true);-->
-<!--                return;-->
-<!--            }-->
-<!--            var url = "user!editRole.ct?roleid=" + Arr2String(arr);-->
-<!--            showWindow(url, null, 355, 240, "修改角色参数", loadNowPage, true);-->
-<!--        }-->
-
-<!--        function setPermit() {-->
-<!--            var arr = DataGrid.getSelectedValue("dg1");-->
-<!--            if (arr == null || arr.length == 0) {-->
-<!--                Exceptalert("请先选择要授权的角色！", null, true);-->
-<!--                return;-->
-<!--            }-->
-
-<!--            if (arr.length > 1) {-->
-<!--                Exceptalert("对不起！不能进行批量操作！", null, true);-->
-<!--                return;-->
-<!--            }-->
-<!--            var url = "user!setRolePermit.ct?role_id=" + Arr2String(arr);-->
-<!--            showWindow(url, null, 395, 340, "角色授权", loadNowPage, true);-->
-<!--        }-->
-
-<!--        function del() {-->
-<!--            var arr = DataGrid.getSelectedValue("dg1");-->
-<!--            if (arr == null || arr.length == 0) {-->
-<!--                Exceptalert("请先选择要删除的数据！", null, true);-->
-<!--                return;-->
-<!--            }-->
-<!--            var param = "role_id=" + Arr2String(arr) + "&optype=delete&now=" + new Date().getTime();-->
-<!--            ExceptConfirm('<font color=red>删除角色将会删除角色相关数据，确定删除?</font>', true, function (tp) {-->
-<!--                if (tp == "ok") {-->
-<!--                    loading(base_url);-->
-<!--                    jQuery.ajax({-->
-<!--                        type: "POST",-->
-<!--                        cache: false,-->
-<!--                        url: "user!operRoleInfo.ct",-->
-<!--                        data: param,-->
-<!--                        success: function (result) {-->
-<!--                            if (result == 'true') {-->
-<!--                                Exceptalert("恭喜你，删除角色数据成功！", "success", false);-->
-<!--                                setTimeout('window.location.reload();', 1000);-->
-<!--                            }-->
-<!--                            if (result == 'false') {-->
-<!--                                Exceptalert("对不起，删除角色数据失败！", null, false);-->
-<!--                            }-->
-<!--                        }-->
-<!--                    });-->
-<!--                }-->
-<!--            });-->
-<!--        }-->
-
-<!--        function inits() {-->
-<!--            var stx = document.formSelect.searchText;-->
-<!--            if (stx) {-->
-<!--                stx.select();-->
-<!--            }-->
-<!--        }-->
-
-<!--        function enterSubmit() {-->
-<!--            if (event.keyCode == 13) {-->
-<!--                search();-->
-<!--            }-->
-<!--        }-->
-
-<!--        function search() {-->
-<!--            var searchText = document.getElementById("searchText").value;-->
-<!--            document.formSelect.action = "user!getRoleInfo.ct?searchText=" + searchText;-->
-<!--            document.formSelect.submit();-->
-<!--        }-->
-
-<!--    </script>-->
 </head>
 
 
 <body onload="inits()">
-<!--<form name="formSelect" method="post" action="https://javen666.com/wxb/user!getRoleInfo.ct">-->
     <table width="100%" border="0" cellspacing="6" cellpadding="0"
            style="border-collapse: separate; border-spacing: 6px;">
         <tbody>
@@ -185,134 +95,36 @@ xmlns="http://www.w3.org/1999/xhtml" -->
                                    multiselect="true" autofill="true" scroll="false" lazy="false" cachesize="0">
                                 <tbody>
                                 <tr ztype="head" class="dataTableHead">
-                                    <td width="5%" align="center">序 号</td>
                                     <td width="3%" align="center" ztype="selector" field="id">
-                                        <input type="checkbox" value="*" id="dg1_AllCheck"
-                                               onclick="DataGrid.onAllCheckClick(&#39;dg1&#39;)">
+                                        <input type="checkbox" value="*" id="dg1_AllCheck">
                                     </td>
-                                    <td align="center" width="10%">
-                                        <b>角色编号</b>
-                                    </td>
-                                    <td align="center" width="10%">
-                                        <b>角色名称</b>
-                                    </td>
-                                    <td align="center" width="10%">
-                                        <b>角色类型</b>
-                                    </td>
-                                    <td align="center" width="10%">
-                                        <b>角色描述</b>
-                                    </td>
-                                    <td align="center" width="10%">
-                                        <b>排序编号</b>
-                                    </td>
+                                    <td width="5%" align="center">序 号</td>
+                                    <td align="center" width="10%"><b>角色编号</b></td>
+                                    <td align="center" width="10%"><b>角色名称</b></td>
+                                    <td align="center" width="10%"><b>角色类型</b></td>
+                                    <td align="center" width="10%"><b>角色描述</b></td>
+                                    <td align="center" width="10%"><b>排序编号</b></td>
                                 </tr>
 
-                                <tr height="35" id="57414897_tr" ondblclick="edit(&#39;57414897&#39;);"
-                                    onclick="DataGrid.onRowClick(this,event);" style="background:#f5f5f5">
-
-
+                                <tr th:each="role,item:${roles}" height="35" id="57414897_tr" style="background:#f5f5f5">
                                     <td align="center">
-                                        2
+                                        <input type="checkbox" name="dg1_RowCheck" id="dg1_RowCheck2" th:value="${role.getRoleCode()}">
                                     </td>
-                                    <td align="center" onclick="DataGrid.onSelectorClick(this,event);"
-                                        ondblclick="stopEvent(event);">
-                                        <input type="checkbox" name="dg1_RowCheck" id="dg1_RowCheck2" value="57414897">
-                                    </td>
-
-                                    <td align="center">
-                                        57414897
-                                    </td>
-
-                                    <td align="center">
-                                        管理员角色
-                                    </td>
-
-                                    <td align="center">
-                                        管理角色
-                                    </td>
-
-                                    <td align="center">
-                                        系统管理员角色
-                                    </td>
-
-                                    <td align="center">
-                                        1
-                                    </td>
-                                </tr>
-
-                                <tr height="35" id="68742537_tr" ondblclick="edit(&#39;68742537&#39;);"
-                                    onclick="DataGrid.onRowClick(this,event);" style="background:#ffffff">
-
-
-                                    <td align="center">
-                                        3
-                                    </td>
-                                    <td align="center" onclick="DataGrid.onSelectorClick(this,event);"
-                                        ondblclick="stopEvent(event);">
-                                        <input type="checkbox" name="dg1_RowCheck" id="dg1_RowCheck3" value="68742537">
-                                    </td>
-
-                                    <td align="center">
-                                        68742537
-                                    </td>
-
-                                    <td align="center">
-                                        xiaoming
-                                    </td>
-
-                                    <td align="center">
-                                        业务角色
-                                    </td>
-
-                                    <td align="center">
-                                        sss
-                                    </td>
-
-                                    <td align="center">
-                                        5
-                                    </td>
-                                </tr>
-
-                                <tr height="35" id="42835745_tr" ondblclick="edit(&#39;42835745&#39;);"
-                                    onclick="DataGrid.onRowClick(this,event);" style="background:#f5f5f5">
-
-
-                                    <td align="center">
-                                        4
-                                    </td>
-                                    <td align="center" onclick="DataGrid.onSelectorClick(this,event);"
-                                        ondblclick="stopEvent(event);">
-                                        <input type="checkbox" name="dg1_RowCheck" id="dg1_RowCheck4" value="92122707">
-                                    </td>
-
-                                    <td align="center">
-                                        92122707
-                                    </td>
-
-                                    <td align="center">
-                                        xiaowei
-                                    </td>
-
-                                    <td align="center">
-                                        管理角色
-                                    </td>
-
-                                    <td align="center">
-                                        ????
-                                    </td>
-
-                                    <td align="center">
-                                        12314
-                                    </td>
+                                    <td align="center" th:text="${item.count}">2</td>
+                                    <td align="center" th:text="${role.getRoleDesc()}">userId</td>
+                                    <td align="center" th:text="${role.getInfoName()}">username</td>
+                                    <td align="center" th:text="${role.getRoleName()}">roleName</td>
+                                    <td align="center" th:text="${role.getRoleType()}">remark</td>
+                                    <td align="center" th:text="${role.getRoleOrder()}">1</td>
                                 </tr>
 
                                 <tr>
                                     <td colspan="7" align="center" id="dg1_PageBar" class="pagebg">
-                                        <div style="float: right; font-family: Tahoma;" class="flickr">
-                                            <span class="current">1</span>
-                                        </div>
+<!--                                        <div style="float: right; font-family: Tahoma;" class="flickr">-->
+<!--                                            <span class="current">1</span>-->
+<!--                                        </div>-->
                                         <div style="float: left; font-family: Tahoma">
-                                            共 4 条记录，每页 20 条，共 1 页
+                                            共 6 条记录，每页 6 条，共 1 页
                                         </div>
                                     </td>
                                 </tr>
@@ -326,8 +138,6 @@ xmlns="http://www.w3.org/1999/xhtml" -->
         </tr>
         </tbody>
     </table>
-<!--</form>-->
-
 <div>
     <div id="maskLevel" style="position:absolute;top:0;left:0;display:none;text-align:center;z-index:10000;"></div>
     <div id="ym-window" style="position:absolute;z-index:10001;display:none">
