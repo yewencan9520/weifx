@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0036)http://localhost:8081/cust/goods/add -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <base th:href="${#request.getContextPath()}+'/'">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--    <link href="css/default.css" rel="stylesheet" id="lhgdialoglink">-->
     <title>商品管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-<!--    <link rel="stylesheet" href="css/font-awesome.min.css">-->
-<!--    <link rel="stylesheet" href="css/font.css">-->
-<!--    <link rel="stylesheet" href="css/ace.min.css">-->
     <link rel="stylesheet" href="css/ace-rtl.min.css">
     <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="css/jquery.gritter.css">
@@ -24,7 +19,18 @@
     <script type="text/javascript" src="js/publics.js"></script>
     <script type="text/javascript" src="js/table.js"></script>
     <script type="text/javascript" src="js/vdata.js"></script>
-    <link href="css/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/typeahead-bs2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/bootbox.min.js"></script>
+    <script type="text/javascript" src="js/jquery.gritter.min.js"></script>
+    <!-- ace scripts -->
+    <script type="text/javascript" src="js/ace-elements.min.js"></script>
+    <script type="text/javascript" src="js/ace.min.js"></script>
+    <script type="text/javascript" src="js/WdatePicker.js"></script>
+    <script type="text/javascript" src="js/lhgdialog.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/WdatePicker.css">
 </head>
 
 <body style="">
@@ -124,7 +130,6 @@
                     </small>
                 </h1>
             </div>
-<!--            <form method="post" name="copy_form" id="copy_form" action="save" enctype="application/text">-->
                 <div class="widget-main">
                     <input type="hidden" id="sku_str" name="sku_str" value="">
                     <input type="hidden" id="ctype" name="ctype" value="custGood">
@@ -191,7 +196,6 @@
                             </td>
                         </tr>
                         <!--第一张图片上传-->
-
                             <tr>
                                 <td align="right"><span class="red">*</span><strong>上传图片：</strong></td>
                                 <td>
@@ -202,7 +206,6 @@
                                     </form>
                                 </td>
                             </tr>
-
                         <!------------------------------------------------------>
                         <tr>
                             <td align="right"><strong>图片2预览：</strong></td>
@@ -214,7 +217,6 @@
                             </td>
                         </tr>
                         <!--第二张图片上传-->
-
                             <tr>
                                 <td align="right"><span class="red">*</span><strong>上传图片2：</strong></td>
                                 <td>
@@ -225,7 +227,6 @@
                                     </form>
                                 </td>
                             </tr>
-
                         <!------------------------------------------------------>
                         <tr>
                             <td align="right"><strong>图片3预览：</strong></td>
@@ -237,7 +238,6 @@
                             </td>
                         </tr>
                         <!--第三张图片上传-->
-
                             <tr>
                                 <td align="right"><span class="red">*</span><strong>上传图片3：</strong></td>
                                 <td>
@@ -248,7 +248,6 @@
                                     </form>
                                 </td>
                             </tr>
-
                         <tr>
                             <td align="right"><span class="red">*</span><strong>推广说明：</strong></td>
                             <td>
@@ -374,53 +373,17 @@
                         </tbody>
                     </table>
                 </div>
-<!--            </form>-->
-        </div><!-- /.page-content -->
-
+        </div>
     </div>
     <a href="http://localhost:8081/cust/goods/add#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
         <i class="icon-double-angle-up icon-only bigger-110"></i>
     </a>
 </div>
 
-<!--&lt;!&ndash; menu start&ndash;&gt;-->
-<!--&lt;!&ndash;[if !IE]> &ndash;&gt;-->
-<!--<script src="jquery-2.0.3.min.js"></script>-->
-<!--&lt;!&ndash; <![endif]&ndash;&gt;-->
-<!--&lt;!&ndash;[if IE]>-->
-<!--<script src="/customer/assets/js/jquery-1.10.2.min.js"></script>-->
-<!--<![endif]&ndash;&gt;-->
-<!--&lt;!&ndash;[if !IE]> &ndash;&gt;-->
-<!--<script type="text/javascript">-->
-<!--    window.jQuery || document.write("<script src='/customer/assets/js/jquery-2.0.3.min.js'>" + "<" + "script>");-->
-<!--</script>-->
-<!--&lt;!&ndash; <![endif]&ndash;&gt;-->
-<!--&lt;!&ndash;[if IE]>-->
-<!--<script type="text/javascript">-->
-<!--    window.jQuery || document.write("<script src='/customer/assets/js/jquery-1.10.2.min.js'>" + "<" + "script>");-->
-<!--</script>-->
-<!--<![endif]&ndash;&gt;-->
 <script type="text/javascript">
     if ("ontouchend" in document) document.write("<script src='js/jquery.mobile.custom.min.js'>" + "<" + "script>");
 </script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/typeahead-bs2.min.js"></script>
-<!-- page specific plugin scripts -->
-<!--&lt;!&ndash;[if lte IE 8]>-->
-<!--<script src="/customer/assets/js/excanvas.min.js"></script>-->
-<!--<![endif]&ndash;&gt;-->
 
-<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
-<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
-<script type="text/javascript" src="js/bootbox.min.js"></script>
-<script type="text/javascript" src="js/jquery.gritter.min.js"></script>
-
-<!-- ace scripts -->
-<script type="text/javascript" src="js/ace-elements.min.js"></script>
-<script type="text/javascript" src="js/ace.min.js"></script>
-
-<script type="text/javascript" src="js/WdatePicker.js"></script>
-<script type="text/javascript" src="js/lhgdialog.min.js"></script>
 
 <div id="ldg_dragmask"
      style="display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; cursor: move; opacity: 0; background: rgb(255, 255, 255); pointer-events: none;"></div>

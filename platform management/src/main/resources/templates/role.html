@@ -1,20 +1,8 @@
-<!-- saved from url=(0044)https://javen666.com/wxb/user!getRoleInfo.ct
-xmlns="http://www.w3.org/1999/xhtml" -->
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <base th:href="${#request.getContextPath()}+'/'">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript">
-        <!--
-        var CONTEXTPATH = '/wxb';
-        var base_url = "/wxb";
-        try {
-            document.execCommand("BackgroundImageCache", false, true);
-        } catch (e) {
-        }
-        //-->
-    </script>
-
     <!-- 树组件start -->
     <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
     <link rel="stylesheet" href="css/zTreeStyle.css" type="text/css">
@@ -31,11 +19,9 @@ xmlns="http://www.w3.org/1999/xhtml" -->
     <script type="text/javascript" src="js/WdatePicker.js"></script>
     <link href="css/WdatePicker(1).css" rel="stylesheet" type="text/css">
 
-
-    <script src="css/framework.js"></script>
+    <script src="js/framework1.js"></script>
     <title>角色信息管理</title>
 </head>
-
 
 <body onload="inits()">
     <table width="100%" border="0" cellspacing="6" cellpadding="0"
@@ -120,9 +106,6 @@ xmlns="http://www.w3.org/1999/xhtml" -->
 
                                 <tr>
                                     <td colspan="7" align="center" id="dg1_PageBar" class="pagebg">
-<!--                                        <div style="float: right; font-family: Tahoma;" class="flickr">-->
-<!--                                            <span class="current">1</span>-->
-<!--                                        </div>-->
                                         <div style="float: left; font-family: Tahoma">
                                             共 6 条记录，每页 6 条，共 1 页
                                         </div>
@@ -175,7 +158,7 @@ xmlns="http://www.w3.org/1999/xhtml" -->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span></button>
+                    <span aria-hidden="true">X</span></button>
                 <h4 class="modal-title" id="gridModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
@@ -187,10 +170,10 @@ xmlns="http://www.w3.org/1999/xhtml" -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Save</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+    </div>
 </div>
 <!------------------------------>
 <script type="text/javascript">
@@ -202,20 +185,72 @@ xmlns="http://www.w3.org/1999/xhtml" -->
                 return;
             }
         });
+        var str="";
+        var unstr="";
         $.ajax({
             url: "RoleTree?roleId="+roleId,
             method: "get",
             success: function (data) {
-                $('#treeview-checkable').treeview({
+                var $checkableTree = $('#treeview-checkable').treeview({
                     levels: 1,
                     color: "#428bca",
                     data: data,
                     showIcon: false,
                     showCheckbox: true,
                     onNodeChecked: function (event, node) {
+                        $('#checkable-output').prepend('<p>' + node.text + ' was checked</p>');
+                        // var list = node.nodes;
+                        // if(list != null) {
+                        //     for (let i = 0; i < list.length; i++) {
+                        //         list[i].state.checked=true;
+                        //         str+=list[i].nodeId+",";
+                        //         $checkableTree.treeview('toggleNodeChecked', [ list[i].text, { silent: $('#chk-check-silent').is(':checked') }]);
+                        //     }
+                        // }
+                        // if(!unstr.includes(node.nodeId)) {
+                        //     str+=node.nodeId+",";
+                        // }
+                        // unstr=unstr.replace(node.nodeId+",","")
+                    },
+                    onNodeUnchecked: function (event, node) {
+                        $('#checkable-output').prepend('<p>' + node.text + ' was unchecked</p>');
+                    //     if (!str.includes(node.nodeId)){
+                    //         unstr+=node.nodeId+",";
+                    //     }
+                    //     str=str.replace(node.nodeId+",","")
                     }
                 });
+                var findCheckableNodess = function() {
+                    return $checkableTree.treeview('search', [ $('#input-check-node').val(), { ignoreCase: false, exactMatch: false } ]);
+                };
+                var checkableNodes = findCheckableNodess();
 
+                // Check/uncheck/toggle nodes
+                $('#input-check-node').on('keyup', function (e) {
+                    checkableNodes = findCheckableNodess();
+                    $('.check-node').prop('disabled', !(checkableNodes.length >= 1));
+                });
+
+                $('#btn-check-node.check-node').on('click', function (e) {
+                    $checkableTree.treeview('checkNode', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
+                });
+
+                $('#btn-uncheck-node.check-node').on('click', function (e) {
+                    $checkableTree.treeview('uncheckNode', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
+                });
+
+                $('#btn-toggle-checked.check-node').on('click', function (e) {
+                    $checkableTree.treeview('toggleNodeChecked', [ checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
+                });
+
+                // Check/uncheck all
+                $('#btn-check-all').on('click', function (e) {
+                    $checkableTree.treeview('checkAll', { silent: $('#chk-check-silent').is(':checked') });
+                });
+
+                $('#btn-uncheck-all').on('click', function (e) {
+                    $checkableTree.treeview('uncheckAll', { silent: $('#chk-check-silent').is(':checked') });
+                });
             }
         });
     }
