@@ -2,15 +2,18 @@ package com.abc.platform;
 
 import com.abc.platform.bean.SysRole;
 import com.abc.platform.bean.UserInfo;
-import com.abc.platform.bean.WxbGood;
-import com.abc.platform.dao.AddDao;
+import com.abc.platform.bean.WxbCustomer;
+import com.abc.platform.bean.WxbGoods;
+import com.abc.platform.dao.ProductDao;
 import com.abc.platform.dao.RoleDao;
 import com.abc.platform.dao.UserDao;
+import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Random;
 
@@ -19,7 +22,8 @@ class PlatformApplicationTests {
 
     @Autowired
     private UserDao userDao;
-    private AddDao addDao;
+    @Autowired
+    private ProductDao productDao;
     @Test
     void contextLoads() {
 
@@ -35,7 +39,7 @@ class PlatformApplicationTests {
     }
     @Test
     public void AddDao(){
-        WxbGood wxbGood = new WxbGood();
+        WxbGoods wxbGood = new WxbGoods();
         wxbGood.setGoodsId("1");
         wxbGood.setTypeId("2");
         wxbGood.setGoodsName("hahaha");
@@ -43,7 +47,7 @@ class PlatformApplicationTests {
         wxbGood.setGoodsPic2("test2");
         wxbGood.setGoodsPic3("test3");
         System.out.println(wxbGood);
-        addDao.insertAddProduct(wxbGood);
+        productDao.insertAddProduct(wxbGood);
 
     }
     @Resource
@@ -56,6 +60,27 @@ class PlatformApplicationTests {
             System.out.println(sysRole);
         }
 
+    }
+    @Test
+    public void findAllGoodsByPage(){
+        List<PageInfo> page = productDao.findAllGoodsByPage(0);
+        System.out.println(page);
+    }
+
+    @Test
+    public void updata(){
+        productDao.updateSkustatesById(1,"16344265");
+    }
+
+    @Test
+    public void findAllCustomer(){
+        List<WxbCustomer> customer = productDao.findAllCustomer();
+        System.out.println(customer);
+    }
+    @Test
+    public void getTime(){
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+        System.out.println(time);
     }
 
 }

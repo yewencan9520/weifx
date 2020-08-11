@@ -1,6 +1,5 @@
 package com.abc.weifx.realm;
 
-import com.abc.weifx.bean.UserInfo;
 import com.abc.weifx.dao.UserDao;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

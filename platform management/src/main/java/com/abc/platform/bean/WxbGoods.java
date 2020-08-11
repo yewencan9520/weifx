@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WxbGood {
+public class WxbGoods {
 
   private String goodsId;
   private String goodsName;

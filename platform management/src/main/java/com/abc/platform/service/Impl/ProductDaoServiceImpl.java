@@ -1,47 +1,94 @@
 package com.abc.platform.service.Impl;
 
-import com.abc.platform.bean.JsonResult;
-import com.abc.platform.bean.ResultOv;
-import com.abc.platform.bean.WxbGood;
-import com.abc.platform.bean.WxbGoodSku2;
-import com.abc.platform.dao.AddDao;
-import com.abc.platform.service.AddDaoService;
+import com.abc.platform.bean.*;
+import com.abc.platform.dao.ProductDao;
+import com.abc.platform.service.ProductDaoService;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Random;
 
 @Service
-public class AddDaoServiceImpl implements AddDaoService {
+public class ProductDaoServiceImpl implements ProductDaoService {
 
-    @Autowired
-    private AddDao addDao;
+    @Resource
+    private ProductDao ProductDao;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public void insertData(ResultOv resultOv) throws Exception{
         logs(resultOv);
         String gId = String.valueOf(new Random().nextInt(100000000));
-        WxbGood wxbGood = resultOv.getWxbGood();
+        WxbGoods wxbGood = resultOv.getWxbGood();
         wxbGood.setGoodsId(gId);
         AddProduct(wxbGood);
         AddSku(resultOv.getSku2List(),wxbGood.getGoodsId());
     }
 
     /**
+     * 商品信息管理首页+分页
+     */
+    @Override
+    public List<PageInfo> pageGInfo(Integer currentPage) {
+        List<PageInfo> pages = ProductDao.findAllGoodsByPage(currentPage);
+        return pages;
+    }
+
+    /**
+     * 套餐置顶/取消置顶操作
+     */
+    @Override
+    public int updateSkuTopById(int top,String goodsId) {
+        int top1 = ProductDao.updateSkuTopById(top, goodsId);
+        return top1;
+    }
+    /**
+     * 套餐推荐/取消推荐操作
+     */
+    @Override
+    public int updateSkurecomedById(int recomed,String goodsId) {
+        int recomeds = ProductDao.updateSkurecomedById(recomed, goodsId);
+        return recomeds;
+    }
+    /**
+     * 套餐上架下架操作
+     */
+    @Override
+    public int updateSkustatesById(int state,String goodsId) {
+        int states = ProductDao.updateSkustatesById(state, goodsId);
+        return states;
+    }
+
+    @Override
+    public List<WxbCustomer> findAllCustomer() {
+        List<WxbCustomer> customer = ProductDao.findAllCustomer();
+        return customer;
+    }
+
+    @Override
+    public void insertUser(WxbCustomer customer) {
+        String cId = String.valueOf(new Random().nextInt(10000000));
+        customer.setCustomerId(cId);
+        customer.setCreatetime(new Timestamp(System.currentTimeMillis()));
+        ProductDao.insertUser(customer);
+    }
+
+    /**
      * 新增商品信息
      */
     @Transactional(propagation = Propagation.REQUIRED)
-    public void AddProduct(WxbGood wxbGood){
-        addDao.insertAddProduct(wxbGood);
+    public void AddProduct(WxbGoods wxbGood){
+        ProductDao.insertAddProduct(wxbGood);
     }
 
     /**
@@ -49,7 +96,7 @@ public class AddDaoServiceImpl implements AddDaoService {
      */
     @Transactional(propagation = Propagation.REQUIRED)
     public void AddSku(List<WxbGoodSku2> sku2List,String goodsId){
-        addDao.insertAddSku(sku2List,goodsId);
+        ProductDao.insertAddSku(sku2List,goodsId);
     }
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void logs(Object obj){
@@ -95,14 +142,4 @@ public class AddDaoServiceImpl implements AddDaoService {
     }
 
 
-    //        String title = copy_form.getSku_title().replace("|", "");
-//        copy_form.setSku_title(title);
-//        String cost = copy_form.getSku_cost().replace("|", "");
-//        copy_form.setSku_cost(cost);
-//        String pmoney = copy_form.getSku_pmoney().replace("|", "");
-//        copy_form.setSku_pmoney(pmoney);
-//        String price = copy_form.getSku_price().replace("|", "");
-//        copy_form.setSku_price(price);
-//
-//        int size = productDao.insertProduct(copy_form);
 }

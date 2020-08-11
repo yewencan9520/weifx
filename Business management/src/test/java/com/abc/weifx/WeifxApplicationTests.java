@@ -1,6 +1,5 @@
 package com.abc.weifx;
 
-import com.abc.weifx.bean.UserInfo;
 import com.abc.weifx.dao.UserDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

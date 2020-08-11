@@ -9,26 +9,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PageController {
 
     @RequestMapping("login")
-    public String toLogin(){
+    public String toLogin() {
         return "login";
     }
 
     @RequestMapping("index")
-    public String toindex(){ return "index"; }
-
-    @RequestMapping("goods_info")
-    public String toGoodInfo(){
-        return "goods_info";
+    public String toindex() {
+        return "index";
     }
 
-    @RequestMapping("goods_add")
-    public String toGoodAdd(){
-        return "goods_add";
+    @RequestMapping("gUserAdd")
+    public String toGoodInfo() {
+        return "goodsUserAdd";
     }
 
-//    @RequestMapping("role")
-//    public String toRole(){
-//        return "role";
-//    }
+    @RequestMapping("goodsAdd")
+    public String toGoodAdd() {
+        return "goodsAdd";
+    }
 
 }

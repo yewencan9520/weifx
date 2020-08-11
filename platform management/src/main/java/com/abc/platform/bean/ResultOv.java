@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ResultOv {
 
-    private WxbGood wxbGood;
+    private WxbGoods wxbGood;
     private List<WxbGoodSku2> sku2List;
 
 }

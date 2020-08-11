@@ -1,8 +1,8 @@
 package com.abc.weifx.service;
 
-import com.abc.weifx.bean.UserInfo;
+import com.abc.weifx.bean.WxbCustomer;
 
 public interface UserDaoService {
 
-    UserInfo findUser(String username);
+    WxbCustomer findUser(String username);
 }

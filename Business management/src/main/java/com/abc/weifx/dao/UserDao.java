@@ -1,11 +1,11 @@
 package com.abc.weifx.dao;
 
-import com.abc.weifx.bean.UserInfo;
 
+import com.abc.weifx.bean.WxbCustomer;
 
 public interface UserDao {
 
-    UserInfo findUser(String username);
+    WxbCustomer findUser(String username);
 
 //    List<String> findPermission (String username);
 //

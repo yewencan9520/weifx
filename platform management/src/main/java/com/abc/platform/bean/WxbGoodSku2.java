@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class WxbGoodSku2 {
 
-  private String skuId;
+  private Integer skuId;
   private String skuName;
   private String skuCost;
   private String skuPrice;
@@ -17,7 +17,6 @@ public class WxbGoodSku2 {
   private String goodId;
   private Integer orderNo;
   private String serviceMoney;
-
 
 
 }
