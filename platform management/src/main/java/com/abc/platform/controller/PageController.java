@@ -19,13 +19,18 @@ public class PageController {
     }
 
     @RequestMapping("gUserAdd")
-    public String toGoodInfo() {
+    public String toGoodUserAdd() {
         return "goodsUserAdd";
     }
 
     @RequestMapping("goodsAdd")
     public String toGoodAdd() {
         return "goodsAdd";
+    }
+
+    @RequestMapping("goodsInfo")
+    public String toGoodInfo() {
+        return "goodsInfo";
     }
 
 }

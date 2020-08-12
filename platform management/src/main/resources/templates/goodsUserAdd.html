@@ -54,7 +54,7 @@
             </tr>
             <tr>
                 <td>是否有效:</td>
-                <td id="state">
+                <td>
                     <input type="radio" name="state" value="1">有效
                     <input type="radio" name="state" value="0">无效
                 </td>
@@ -83,7 +83,6 @@
         var customer = {"customerName":customerName,"qq":qq,"wxh":wxh,
                 "phone":phone,"loginName":loginName,"loginPwd":loginPwd,
                 "level":level,"state":state};
-
         $.ajax({
             url:"gUserAdd",
             method:"post",
@@ -91,13 +90,12 @@
             dataType:"json",
             contentType:"application/json",
             success:function(data){
-                if(data.code=0){
+                if(data.code==0){
                     alert(data.obj)
-                    window.location.href='gUser'
+                    $("#content").load("gUser");
                 }else{
                     alert(data.obj)
                 }
-
             }
         });
     }

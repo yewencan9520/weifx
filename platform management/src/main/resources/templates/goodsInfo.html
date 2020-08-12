@@ -48,22 +48,22 @@
             <button class="btn btn-sm btn-success" onclick="window.location.href='page/good_add'">
                 <i class="icon-save bigger-110"></i>删除
             </button>
-            <button class="btn btn-sm btn-success" onclick="tops()">
+            <button class="btn btn-sm btn-success" onclick="audit('tops')">
                 <i class="icon-save bigger-110"></i>置顶
             </button>
-            <button class="btn btn-sm btn-success" onclick="untops()">
+            <button class="btn btn-sm btn-success" onclick="audit('untops')">
                 <i class="icon-save bigger-110"></i>取消置顶
             </button>
-            <button class="btn btn-sm btn-success" onclick="recomed()">
+            <button class="btn btn-sm btn-success" onclick="audit('recomed')">
                 <i class="icon-save bigger-110"></i>推荐
             </button>
-            <button class="btn btn-sm btn-success" onclick="unrecomed()">
+            <button class="btn btn-sm btn-success" onclick="audit('unrecomed')">
                 <i class="icon-save bigger-110"></i>取消推荐
             </button>
-            <button class="btn btn-sm btn-success" onclick="states()">
+            <button class="btn btn-sm btn-success" onclick="audit('states')">
                 <i class="icon-save bigger-110"></i>上架
             </button>
-            <button class="btn btn-sm btn-success" onclick="unstates()">
+            <button class="btn btn-sm btn-success" onclick="audit('unstates')">
                 <i class="icon-save bigger-110"></i>下架
             </button>
         </div>
@@ -214,12 +214,9 @@
         });
     }
 </script>
-
+<!--审核方法-->
 <script>
-    function getSkuId() {
-    //提取获得skuId的方法
-    }
-    function tops() {
+    function audit(url) {
         var goodsId;
         $("input[name='dg1_RowCheck2']").each(function () {
             if($(this).is(":checked")){
@@ -228,98 +225,14 @@
             }
         });
         $.ajax({
-            url:"tops?goodsId="+goodsId,
+            url:url+"?goodsId="+goodsId,
             method:"get",
             success:function (data) {
                 alert(data.obj),
                 $("#content").load("gInfo");
             }
         });
-    }
-    function untops() {
-        var goodsId;
-        $("input[name='dg1_RowCheck2']").each(function () {
-            if($(this).is(":checked")){
-                goodsId=$(this).val();
-                return;
-            }
-        });
-        $.ajax({
-            url:"untops?goodsId="+goodsId,
-            method:"get",
-            success:function (data) {
-                alert(data.obj),
-                $("#content").load("gInfo");
-            }
-        });
-    }
-    function recomed() {
-        var goodsId;
-        $("input[name='dg1_RowCheck2']").each(function () {
-            if($(this).is(":checked")){
-                goodsId=$(this).val();
-                return;
-            }
-        });
-        $.ajax({
-            url:"recomed?goodsId="+goodsId,
-            method:"get",
-            success:function (data) {
-                alert(data.obj),
-                    $("#content").load("gInfo");
-            }
-        });
-    }
-    function unrecomed() {
-        var goodsId;
-        $("input[name='dg1_RowCheck2']").each(function () {
-            if($(this).is(":checked")){
-                goodsId=$(this).val();
-                return;
-            }
-        });
-        $.ajax({
-            url:"unrecomed?goodsId="+goodsId,
-            method:"get",
-            success:function (data) {
-                alert(data.obj),
-                    $("#content").load("gInfo");
-            }
-        });
-    }
-    function states() {
-        var goodsId;
-        $("input[name='dg1_RowCheck2']").each(function () {
-            if($(this).is(":checked")){
-                goodsId=$(this).val();
-                return;
-            }
-        });
-        $.ajax({
-            url:"states?goodsId="+goodsId,
-            method:"get",
-            success:function (data) {
-                alert(data.obj),
-                    $("#content").load("gInfo");
-            }
-        });
-    }
-    function unstates() {
-        var goodsId;
-        $("input[name='dg1_RowCheck2']").each(function () {
-            if($(this).is(":checked")){
-                goodsId=$(this).val();
-                return;
-            }
-        });
-        $.ajax({
-            url:"unstates?goodsId="+goodsId,
-            method:"get",
-            success:function (data) {
-                alert(data.obj),
-                    $("#content").load("gInfo");
-            }
-        });
+
     }
     function page1() {
         $("#content").load("gInfo?currentPage=0");

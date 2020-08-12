@@ -70,10 +70,24 @@ public class ProductController {
         model.addAttribute("customer",customer);
         return "goodsUser";
     }
+
+    /**
+     * 商户信息管理-新增商户
+     */
     @RequestMapping("gUserAdd")
-    public String goodsUserAdd(@RequestBody WxbCustomer customer){
-        ProductDaoService.insertUser(customer);
-        return "goodsUser";
+    @ResponseBody
+    public JsonResult goodsUserAdd(@RequestBody WxbCustomer customer){
+        JsonResult jsonResult = new JsonResult();
+        try{
+            ProductDaoService.insertUser(customer);
+            jsonResult.setCode(0);
+            jsonResult.setObj("新增成功");
+            return jsonResult;
+        }catch (Exception e){
+            jsonResult.setCode(1);
+            jsonResult.setObj("新增失败");
+            return jsonResult;
+        }
     }
 
     /**
@@ -90,7 +104,7 @@ public class ProductController {
             jsonResult.setObj("置顶操作成功");
             return jsonResult;
         }catch (Exception e){
-            jsonResult.setCode(0);
+            jsonResult.setCode(1);
             jsonResult.setObj("置顶操作失败");
             return jsonResult;
         }

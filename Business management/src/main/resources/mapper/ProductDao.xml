@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.abc.weifx.dao.AddDao">
+<mapper namespace="com.abc.Business.dao.AddDao">
 
     <insert id="insertProduct">
         insert into wxb_Good
@@ -13,7 +13,7 @@
     </insert>
 
 
-    <resultMap id="rm" type="com.abc.weifx.bean.WxbGood">
+    <resultMap id="rm" type="com.abc.Business.bean.WxbGood">
         <result property="good_name" column="good_name"></result>
         <result property="good_pic1" column="good_pic1"></result>
         <result property="sku_price" column="sku_price"></result>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Business management/Business management.iml" filepath="$PROJECT_DIR$/Business management/Business management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cline management/cline management.iml" filepath="$PROJECT_DIR$/cline management/cline management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/platform management/platform management.iml" filepath="$PROJECT_DIR$/platform management/platform management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/weifx.iml" filepath="$PROJECT_DIR$/.idea/weifx.iml" />
+    </modules>
+  </component>
+</project>

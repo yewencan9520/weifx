@@ -2,18 +2,18 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.abc.weifx.dao.TreeNodeDao">
+<mapper namespace="com.abc.Business.dao.TreeNodeDao">
 
-    <resultMap id="baseResult" type="com.abc.weifx.bean.TreeNodeBean">
+    <resultMap id="baseResult" type="com.abc.Business.bean.TreeNodeBean">
         <result property="text" column="p_name"/>
         <result property="href" column="p_url"/>
-        <collection property="nodes" column="c1_module" ofType="com.abc.weifx.bean.TreeNodeBean">
+        <collection property="nodes" column="c1_module" ofType="com.abc.Business.bean.TreeNodeBean">
             <result property="text" column="c1_name"/>
             <result property="href" column="c1_url"/>
-            <collection property="nodes" column="c2_module" ofType="com.abc.weifx.bean.TreeNodeBean">
+            <collection property="nodes" column="c2_module" ofType="com.abc.Business.bean.TreeNodeBean">
                 <result property="text" column="c2_name"/>
                 <result property="href" column="c2_url"/>
-                <collection property="nodes" column="c3_module" ofType="com.abc.weifx.bean.TreeNodeBean">
+                <collection property="nodes" column="c3_module" ofType="com.abc.Business.bean.TreeNodeBean">
                     <result property="text" column="c3_name"/>
                     <result property="href" column="c3_url"/>
                 </collection>

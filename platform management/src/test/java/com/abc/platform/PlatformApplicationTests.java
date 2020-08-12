@@ -1,9 +1,7 @@
 package com.abc.platform;
 
-import com.abc.platform.bean.SysRole;
-import com.abc.platform.bean.UserInfo;
-import com.abc.platform.bean.WxbCustomer;
-import com.abc.platform.bean.WxbGoods;
+import com.abc.platform.bean.*;
+import com.abc.platform.dao.OrderDao;
 import com.abc.platform.dao.ProductDao;
 import com.abc.platform.dao.RoleDao;
 import com.abc.platform.dao.UserDao;
@@ -24,6 +22,8 @@ class PlatformApplicationTests {
     private UserDao userDao;
     @Autowired
     private ProductDao productDao;
+    @Autowired
+    private OrderDao orderDao;
     @Test
     void contextLoads() {
 
@@ -81,6 +81,12 @@ class PlatformApplicationTests {
     public void getTime(){
         Timestamp time = new Timestamp(System.currentTimeMillis());
         System.out.println(time);
+    }
+
+    @Test
+    public void findAllOrder(){
+        List<WxbOrder> allOrder = orderDao.findAllOrder();
+        System.out.println(allOrder);
     }
 
 }

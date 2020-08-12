@@ -725,9 +725,9 @@
             dataType:"json",
             contentType:"application/json",
             success:function(data){
-                if(data.code=0){
+                if(data.code==0){
                     alert(data.obj)
-                    window.location.href='gInfo'
+                    $("#content").load("gInfo");
                 }else{
                     alert(data.obj)
                 }

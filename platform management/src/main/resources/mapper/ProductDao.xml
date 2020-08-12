@@ -44,10 +44,6 @@
         limit #{currentPage},3
     </select>
 
-<!--    <select id="selectTotalSize" resultType="int">-->
-<!--        SELECT COUNT(*) FROM wxb_goods JOIN wxb_customer ON wxb_goods.`customer_id`=wxb_customer.`customer_id`-->
-<!--    </select>-->
-
     <update id="updateSkuTopById">
         update wxb_goods set toped=#{top} where goods_id=#{goodsId}
     </update>
@@ -65,9 +61,8 @@
     </select>
 
     <insert id="insertUser">
-        INSERT INTO wxb_customer(customer_id,customer_name,QQ,wxh,phone,createtime,login_name,login_pwd)
-        VALUES(#{customerId},#{customerName},#{qq},#{wxh},#{phone},#{createtime},#{loginName},#{loginPwd})
-
+        INSERT INTO wxb_customer(customer_id,customer_name,QQ,wxh,phone,createtime,login_name,login_pwd,state,level)
+        VALUES(#{customerId},#{customerName},#{qq},#{wxh},#{phone},#{createtime},#{loginName},#{loginPwd},#{state},#{level})
     </insert>
 
 </mapper>
