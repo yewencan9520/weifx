@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>自媒体盈利平台</title>
+    <meta property="qc:admins" content="4441727777670263757">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="http://localhost:8081/wxb/images/favicon.ico">
+    <link rel="icon" type="image/gif" href="http://localhost:8081/wxb/images/favicon.gif">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style-metronic.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--[if IE 8]>
+    <script type="text/javascript" src="js/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        var SITE_PUBLIC = '/';
+        var SITE_UPLOAD = '/files/';
+    </script>
+</head>
+<body class="admin" style="">
+
+<div>
+    <h2 class="page-title"><em>订单结算流水</em></h2>
+    <ul id="tab1_title" class="clearfix tab-style-10">
+        <li class="active">
+            <a href="http://localhost:8081/payoff/log/1">待结算</a>
+        </li>
+        <li>
+            <a href="http://localhost:8081/payoff/log/2">已结算，待返款</a>
+        </li>
+        <li>
+            <a href="http://localhost:8081/payoff/log/3">已返款</a>
+        </li>
+    </ul>
+
+    <div class="tab-pane active" id="yesList">
+        <table id="yes_table" class="table table-cps table-hover  table-advance">
+            <thead>
+            <tr class="col-align-center">
+                <th>下单时间</th>
+                <th>订购商品/数量</th>
+                <th>渠道</th>
+                <th>分成金额</th>
+                <th>状态</th>
+                <th>订单详情</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div class="grid-pagination-wrap text-center clearfix show">
+
+            <div class="jogger">
+                <a href="javascript:void(0);">共0页</a>
+                <a href="javascript:void(0);">0条记录</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/underscore-min.js"></script>
+<script type="text/javascript" src="js/back-to-top.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="js/win.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+</div>
+<div id="topcontrol" title="返回顶部" style="position: fixed; bottom: 110px; right: 10px; opacity: 0; cursor: pointer;">
+    <div class="back-to-top"></div>
+</div>
+</body>
+</html>

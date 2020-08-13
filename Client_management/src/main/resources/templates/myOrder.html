@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="${#request.getContextPath()}+'/'">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>自媒体盈利平台</title>
+    <meta property="qc:admins" content="4441727777670263757">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style-metronic.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css">
+    <!--[if IE 8]>
+    <script type="text/javascript" src="js/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        var SITE_PUBLIC = '/wxb/';
+        var SITE_UPLOAD = '/files/';
+    </script>
+</head>
+<body class="admin" style="">
+<div>
+    <style>
+        .goodsList_table .cover {
+            width: 150px;
+        }
+
+        .goodsList_table .goods-link {
+            font-size: 16px;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .goodsList_table em {
+            font-style: normal;
+            color: #f60;
+            font-weight: bold;
+        }
+
+        .order-status--20, .order-status--10, .order-status-50, .order-status-60 {
+            color: #999999;
+        }
+
+        .order-status-20, .order-status-10 {
+            color: #ff7700;
+        }
+
+        .order-status-30, .order-status-40 {
+            color: #62bc46;
+        }
+    </style>
+    <h2 class="page-title"><em>我的推广订单</em></h2>
+    <div class="top-area clearfix">
+        <form id="page_form" action="http://localhost:8081/order/list" method="post">
+            <select id="" name="status" class="select-style-1">
+                <option value="" selected="selected">所有</option>
+                <option value="1">已下单</option>
+                <option value="2">待发货</option>
+                <option value="3">已取消</option>
+                <option value="4">已发货</option>
+                <option value="5">己返款</option>
+                <option value="6">已拒收</option>
+                <option value="7">已签收</option>
+                <option value="8">已退货</option>
+                <option value="9">待跟进</option>
+                <option value="10">待退货</option>
+            </select>
+            <select class="select-style-1" name="d_type">
+                <option value="1">下单时间</option>
+            </select>
+            <div class="input-group date-picker input-daterange" style="width: 250px;">
+                <input type="text" class="form-control" name="s_date" value="">
+                <span class="input-group-addon"> 至</span>
+                <input type="text" class="form-control" name="e_date" value="">
+            </div>
+            <select class="select-style-1" name="goods_id">
+                <option value="" selected="">选择商品</option>
+                <option value="14886110">asdadsa</option>
+                <option value="44671132">33</option>
+                <option value="73515420">111111</option>
+                <option value="pb1n3rya">444</option>
+            </select>
+            <select class="select-style-1" name="channel_id">
+                <option value="" selected="">推广渠道</option>
+                <option value="33">基本原则</option>
+                <option value="35">基本原则</option>
+                <option value="36">基本原则</option>
+                <option value="37">4214</option>
+            </select>
+            <div class="pull-right search_div">
+                <div style="width: 250px;" class="input-group">
+                    <input type="text" name="courier_id" value="" id="search_input"
+                           class="form-control">
+                    <span class="input-group-btn">
+                        <button id="page_search" class="btn red search_btn" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <table id="yes_table" class="table table-advance table-cps table-hover  goodsList_table margin-top-10">
+        <thead>
+        <tr class="col-align-center">
+            <th width="100">下单时间</th>
+            <th width="120">客户（电话）</th>
+            <th width="180" class="text-left">订购商品/数量</th>
+            <th>推广渠道</th>
+            <th width="100">价格/分成</th>
+            <th width="70">状态</th>
+            <th width="100">支付方式</th>
+            <th width="100">支付状态</th>
+            <th width="80">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="col-align-center" id="gItemn70zsqmx" data-id="n70zsqmx">
+            <td style="word-break: normal;" class="account-list-first-col">2016-05-21 02:16:42</td>
+            <td>f**<br>
+                [180*****609]
+            </td>
+            <td>33/1套</td>
+            <td>--</td>
+            <td>
+                                  <span class="text-yellow text-bold">￥10/
+                                      <span style="color:#228b22"> ￥0</span>
+                                  </span>
+            </td>
+            <td class="order-status--20">已下单</td>
+            <td class="order-status--20">货到付款</td>
+            <td class="order-status--20">
+                <font color="red">未付款</font>
+            </td>
+            <td>
+                <a target="_self" class="btn btn-link" href="http://localhost:8081/order/detail/n70zsqmx">详情</a>
+            </td>
+        </tr>
+        <tr class="col-align-center" id="gItem05av58qa" data-id="05av58qa">
+            <td style="word-break: normal;" class="account-list-first-col">
+                2016-05-20 04:22:47
+            </td>
+            <td>
+                r**<br>
+                [180*****609]
+            </td>
+            <td>444/1套</td>
+            <td>--</td>
+            <td>
+                <span class="text-yellow text-bold">￥10/
+                    <span style="color:#228b22"> ￥0</span>
+                </span>
+            </td>
+            <td class="order-status--20">已下单</td>
+            <td class="order-status--20"> 货到付款</td>
+            <td class="order-status--20">
+                <font color="red">未付款</font>
+            </td>
+            <td>
+                <a target="_self" class="btn btn-link" href="http://localhost:8081/order/detail/05av58qa">详情</a>
+            </td>
+        </tr>
+        <tr class="col-align-center" id="gItem47rbdnjt" data-id="47rbdnjt">
+            <td style="word-break: normal;" class="account-list-first-col">
+                2016-05-20 04:22:03
+            </td>
+            <td>
+                r**<br>[180*****609]
+            </td>
+            <td>444/1套</td>
+            <td>--</td>
+            <td>
+                  <span class="text-yellow text-bold">￥10/
+                      <span style="color:#228b22"> ￥0</span>
+                  </span>
+            </td>
+            <td class="order-status--20">已下单</td>
+            <td class="order-status--20"> 微信支付 </td>
+            <td class="order-status--20">
+                <font color="red">未付款</font>
+            </td>
+            <td>
+                <a target="_self" class="btn btn-link"
+                   href="http://localhost:8081/order/detail/47rbdnjt">详情</a>
+            </td>
+        </tr>
+        <tr class="col-align-center" id="gItemmw0gvghu" data-id="mw0gvghu">
+            <td style="word-break: normal;" class="account-list-first-col">
+                2016-05-20 04:21:36
+            </td>
+            <td>
+                r**<br>[180*****609]
+            </td>
+            <td>444/1套</td>
+            <td>--</td>
+            <td>
+                  <span class="text-yellow text-bold">￥10/
+                      <span style="color:#228b22"> ￥0</span>
+                  </span>
+            </td>
+
+            <td class="order-status--20">已下单</td>
+            <td class="order-status--20">
+
+
+                货到付款
+
+            </td>
+            <td class="order-status--20">
+
+
+                <font color="red">未付款</font>
+
+            </td>
+            <td>
+                <a target="_self" class="btn btn-link"
+                   href="http://localhost:8081/order/detail/mw0gvghu">详情</a>
+            </td>
+        </tr>
+
+        <tr class="col-align-center" id="gItemrrk8v3sx" data-id="rrk8v3sx">
+            <td style="word-break: normal;" class="account-list-first-col">
+                2016-05-20 04:19:26
+            </td>
+            <td>
+                a**<br>[137*****986]
+            </td>
+            <td>444/1套</td>
+            <td>--</td>
+            <td>
+                  <span class="text-yellow text-bold">￥10/ <span style="color:#228b22"> ￥0
+                    </span>
+ </span>
+            </td>
+            <td class="order-status--20">已下单</td>
+            <td class="order-status--20">微信支付</td>
+            <td class="order-status--20">
+                <font color="red">未付款</font>
+            </td>
+            <td>
+                <a target="_self" class="btn btn-link" href="http://localhost:8081/order/detail/rrk8v3sx">详情</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!--翻页-->
+    <div class="grid-pagination-wrap text-center clearfix show">
+        <div class="jogger">1
+            <a href="javascript:void(0);">共1页</a>
+            <a href="javascript:void(0);">5条记录</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/underscore-min.js"></script>
+<script type="text/javascript" src="js/back-to-top.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="js/win.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.date-picker').datepicker({
+            autoclose: true,
+            format: 'yyyy-mm-dd'
+        });
+        $('#page_form select').change(function () {
+            $('#page_search').click();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+<div id="topcontrol" title="返回顶部" style="position: fixed; bottom: 110px; right: 10px; opacity: 0; cursor: pointer;">
+    <div class="back-to-top"></div>
+</div>
+</body>
+</html>
