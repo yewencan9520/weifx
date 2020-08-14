@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Business management/Business management.iml" filepath="$PROJECT_DIR$/Business management/Business management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Business_management/Business_management.iml" filepath="$PROJECT_DIR$/Business_management/Business_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Client_management/Client_management.iml" filepath="$PROJECT_DIR$/Client_management/Client_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Platform_management/Platform_management.iml" filepath="$PROJECT_DIR$/Platform_management/Platform_management.iml" />
       <module fileurl="file://$PROJECT_DIR$/cline management/cline management.iml" filepath="$PROJECT_DIR$/cline management/cline management.iml" />
       <module fileurl="file://$PROJECT_DIR$/platform management/platform management.iml" filepath="$PROJECT_DIR$/platform management/platform management.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/weifx.iml" filepath="$PROJECT_DIR$/.idea/weifx.iml" />

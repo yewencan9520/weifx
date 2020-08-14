@@ -34,7 +34,7 @@ public class UserController {
             subject.login(usernamePasswordToken);
             session.setAttribute("username",username);
             jsonResult.setCode(0);
-            jsonResult.setObj("page/index");
+            jsonResult.setObj(username);
             return jsonResult;
         }catch (Exception e){
             jsonResult.setCode(1);

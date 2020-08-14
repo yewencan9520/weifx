@@ -7,20 +7,29 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Client_management" />
         <module name="Business management" />
         <module name="platform management" />
         <module name="cline management" />
+        <module name="Platform_management" />
+        <module name="Business_management" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Business management" target="1.8" />
+      <module name="Business_management" target="1.8" />
+      <module name="Client_management" target="1.8" />
       <module name="cline management" target="1.8" />
       <module name="platform management" target="1.8" />
+      <module name="Platform_management" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Business management" options="-parameters" />
+      <module name="Business_management" options="-parameters" />
+      <module name="Client_management" options="-parameters" />
+      <module name="Platform_management" options="-parameters" />
       <module name="cline management" options="-parameters" />
       <module name="platform management" options="-parameters" />
     </option>

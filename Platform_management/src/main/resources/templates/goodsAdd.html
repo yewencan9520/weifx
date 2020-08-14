@@ -132,7 +132,7 @@
             </div>
                 <div class="widget-main">
                     <input type="hidden" id="sku_str" name="sku_str" value="">
-                    <input type="hidden" id="ctype" name="ctype" value="custGood">
+                    <input type="hidden" id="ctype" name="ctype" value="">
                     <input type="hidden" id="sku_title" name="sku_title" value="">
                     <input type="hidden" id="sku_cost" name="sku_cost" value="">
                     <input type="hidden" id="sku_pmoney" name="sku_pmoney" value="">
@@ -142,12 +142,20 @@
                     <input type="hidden" id="copy_id" name="copy_id" value="">
                     <input type="hidden" id="spc_id" name="spc_id" value="">
                     <input type="hidden" id="zon_id" name="zon_id" value="">
-                    <input type="hidden" id="optype" name="optype" value="add_good">
-                    <input type="hidden" id="iswxpay" name="iswxpay" value="0">
-                    <input type="hidden" id="customer_id" name="customer_id" value="69609206">
+                    <input type="hidden" id="optype" name="optype" value="">
+                    <input type="hidden" id="iswxpay" name="iswxpay" value="">
+                    <input type="hidden" id="customer_id" name="customer_id" value="">
 
                      <table class="table table-bordered table-striped">
                         <tbody>
+                        <tr>
+                            <td align="right">
+                                <span class="red">*</span><strong>商户ID：</strong>
+                            </td>
+                            <td>
+                                <input type="text" id="user_name" name="user_name" value="">
+                            </td>
+                        </tr>
                         <tr>
                             <td align="right">
                                 <span class="red">*</span><strong>商品名称：</strong>
@@ -157,7 +165,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="right"><span class="red">*</span><strong>商品类型：</strong></td>
+                            <td align="right">
+                                <span class="red">*</span>
+                                <strong>商品类型：</strong>
+                            </td>
                             <td>
                                 <select name="type_id" id="type_id" style="width:252px;font-size:14px"
                                         class="selectBox">
@@ -292,31 +303,31 @@
                             <td align="right"><span class="red">*</span><strong>商品标签：</strong></td>
                             <td>
                                 <label>
-                                    <input type="checkbox" class="ace" id="1" name="tags" value="1">
+                                    <input type="checkbox" class="ace" id="1" name="tags" value="0">
                                     <span class="lbl">
 								             <span class="label label-danger">热销爆款</span>
 								          </span>
                                 </label>
                                 <label>
-                                    <input type="checkbox" class="ace" id="2" name="tags" value="2">
+                                    <input type="checkbox" class="ace" id="2" name="tags" value="1">
                                     <span class="lbl">
 								             <span class="label label-pink">女粉推荐</span>
 								          </span>
                                 </label>
                                 <label>
-                                    <input type="checkbox" class="ace" id="3" name="tags" value="3">
+                                    <input type="checkbox" class="ace" id="3" name="tags" value="2">
                                     <span class="lbl">
 								             <span class="label label-primary">男粉推荐</span>
 										  </span>
                                 </label>
                                 <label>
-                                    <input type="checkbox" class="ace" id="4" name="tags" value="4">
+                                    <input type="checkbox" class="ace" id="4" name="tags" value="3">
                                     <span class="lbl">
 								             <span class="label label-success">人气新品</span>
 								          </span>
                                 </label>
                                 <label>
-                                    <input type="checkbox" class="ace" id="5" name="tags" value="5">
+                                    <input type="checkbox" class="ace" id="5" name="tags" value="4">
                                     <span class="lbl">
 								             <span class="label label-info">男女通用</span>
 								          </span>
@@ -663,10 +674,18 @@
         var typeId = $("#type_id").val();
         var orderNo = $("#order_no").val();
         var sellNum = $("#sell_num").val();
+        var userId = $("#user_id").val();
         var promoteDesc = $("#promote_desc").val();
         var goodsImages1 = $("#sm_yl1").attr("src");
         var goodsImages2 = $("#sm_yl2").attr("src");
         var goodsImages3 = $("#sm_yl3").attr("src");
+
+        var tags=[];
+        $("input[name='dg1_RowCheck']").each(function () {
+            if($(this).is(":checked")){
+                tags=$(this).val();
+            }
+        });
 
         if (goodsName == "") {
             alert("商品名称不能为空");
@@ -716,7 +735,7 @@
 
         var resultOv = {"wxbGood":{"goodsName":goodsName,"typeId":typeId,"goodsPic1":goodsImages1,
                     "goodsPic2":goodsImages2,"goodsPic3":goodsImages3,"orderNo":orderNo,
-                    "sellNum":sellNum,"promoteDesc":promoteDesc},"sku2List":skuArray};
+                    "sellNum":sellNum,"promoteDesc":promoteDesc},"sku2List":skuArray,"tags":tags,"userId":userId};
 
         $.ajax({
             url:"save",

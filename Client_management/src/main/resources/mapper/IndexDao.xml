@@ -26,4 +26,9 @@
             AND p2.sku_id=#{skuId}
     </select>
 
+    <insert id="insertOrder">
+        INSERT INTO wxb_order(order_id,good_id,sku_id,user_id,province,city,AREA,address,buyer_name,buyer_phone,order_time,buyer_reamrk,buy_num)
+        VALUES(#{orderId},#{goodsId},#{skuId},#{userId},#{province},#{city},#{area},#{address},#{buyerName},#{buyerPhone},#{orderTime},#{buyerReamrk},#{buyNum})
+    </insert>
+
 </mapper>

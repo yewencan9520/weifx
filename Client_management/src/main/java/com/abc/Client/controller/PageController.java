@@ -41,5 +41,10 @@ public class PageController {
         return "CloseMoney";
     }
 
+    @RequestMapping("pay")
+    public String toPay(){
+        return "pay";
+    }
+
 
 }

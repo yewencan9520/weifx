@@ -20,7 +20,7 @@
         var SITE_UPLOAD = '/files/';
     </script>
 </head>
-<body class="admin" style="">
+<body>
 <div th:each="sk,item:${sku}">
     <style>
         .good-info {
@@ -67,8 +67,8 @@
         }
     </style>
     <h2 class="page-title">
-        <em th:text="${sk['goodsName']}">444</em>
-        <a class="btn btn-yellow" onclick="lorder()" target="_blank">录单</a>
+        <em th:text="${sk['goodsName']}" id="goodsName" name="goodsName" th:value="${sk['goodsName']}">444</em>
+        <a class="btn btn-yellow" th:onclick="lorder([[${sk.skuId}]],[[${sk.goodsName}]],[[${sk.goodsPic1}]],[[${sk.skuPrice}]]);" target="_blank">录单</a>
     </h2>
     <div class="good-info">
         <div class="row">
@@ -89,7 +89,7 @@
                     <a th:href="${sk['goodsPic1']}" title="" data-rel="fancybox-button" class="fancybox-button">
                         <div class="zoom">
                             <p style="text-align: center">默认尺寸</p>
-                            <img th:src="${sk['goodsPic1']}" style="width:125px;height:85px;" alt="">
+                            <img id="goodsPic1" th:src="${sk['goodsPic1']}" style="width:125px;height:85px;" alt="">
                             <div class="zoom-icon"></div>
                         </div>
                     </a>
@@ -131,7 +131,7 @@
                     <tr></tr>
                     <tr>
                         <td>1</td>
-                        <td class="text-yellow" th:text="${sk['skuPrice']}">1</td>
+                        <td id="skuPrice" class="text-yellow" th:text="${sk['skuPrice']}">1</td>
                         <td class="text-green" th:text="${sk['skuPmoney']}">1</td>
                     </tr>
                     </tbody>
@@ -318,8 +318,8 @@
     });
 </script>
 <script>
-    function lorder() {
-        $("#content").load("page/order")
+    function lorder(url,goodsName,goodsPic1,skuPrice) {
+        $("#content").load("toOrder?skuId="+url+"&goodsName="+goodsName+"&goodsPic1="+goodsPic1+"&skuPrice="+skuPrice)
     }
 </script>
 <div id="topcontrol" title="返回顶部" style="position: fixed; bottom: 110px; right: 10px; opacity: 0; cursor: pointer;">
