@@ -39,7 +39,7 @@
         wxb_goods.`recomed` AS recomed,
         wxb_goods.`toped` AS toped
         FROM wxb_goods
-        JOIN wxb_customer
+        LEFT JOIN wxb_customer
         ON wxb_goods.`customer_id`=wxb_customer.`customer_id`
         limit #{currentPage},3
     </select>
