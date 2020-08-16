@@ -1,6 +1,6 @@
 ##\u914D\u7F6E\u8BBF\u95EE\u7AEF\u53E3
 server:
-  port: 8082
+  port: 8084
 
 spring:
   thymeleaf:

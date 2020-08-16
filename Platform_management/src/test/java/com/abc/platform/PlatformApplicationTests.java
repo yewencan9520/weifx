@@ -5,7 +5,6 @@ import com.abc.platform.dao.OrderDao;
 import com.abc.platform.dao.ProductDao;
 import com.abc.platform.dao.RoleDao;
 import com.abc.platform.dao.UserDao;
-import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -63,8 +62,8 @@ class PlatformApplicationTests {
     }
     @Test
     public void findAllGoodsByPage(){
-        List<PageInfo> page = productDao.findAllGoodsByPage(0);
-        System.out.println(page);
+        List<WxbGoods>  allGoods = productDao.findAllGoods();
+        System.out.println(allGoods);
     }
 
     @Test

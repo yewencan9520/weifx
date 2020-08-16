@@ -2,24 +2,45 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.abc.Business.dao.AddDao">
+<mapper namespace="com.abc.Business.dao.ProductDao">
 
-    <insert id="insertProduct">
-        insert into wxb_Good
-        (good_name,promote_desc,sku_title,sku_cost,sku_price,sku_pmoney,copy_desc,forward_link,order_no,sell_num,tags,good_pic1,good_pic2,good_pic3)
-        values (#{good_name},#{promote_desc},#{sku_title},#{sku_cost},
-        #{sku_price},#{sku_pmoney},#{copy_desc},#{forward_link},
-        #{order_no},#{sell_num},#{tags},#{good_pic1},#{good_pic2},#{good_pic3});
+    <!--新增商品信息-->
+    <insert id="insertAddProduct" useGeneratedKeys="true" keyColumn="goods_id" keyProperty="goodsId">
+        INSERT INTO wxb_goods(order_no,customer_id,goods_id,type_id,goods_name,goods_pic1,goods_pic2,goods_pic3,create_time)
+        VALUES (#{orderNo},#{customerId},#{goodsId},#{typeId},#{goodsName},#{goodsPic1},#{goodsPic2},#{goodsPic3},#{createTime})
     </insert>
 
+    <!--新增套餐信息-->
+    <insert id="insertAddSku">
+        insert into wxb_good_sku2(sku_id,sku_name,sku_cost,sku_price,sku_pmoney,service_money,goods_id) values
+        <foreach collection="list" item="sku" separator=",">
+            (#{sku.skuId},#{sku.skuName},#{sku.skuCost},#{sku.skuPrice},#{sku.skuPmoney},#{sku.serviceMoney},#{goodsId})
+        </foreach>
+    </insert>
 
-    <resultMap id="rm" type="com.abc.Business.bean.WxbGood">
-        <result property="good_name" column="good_name"></result>
-        <result property="good_pic1" column="good_pic1"></result>
-        <result property="sku_price" column="sku_price"></result>
+    <resultMap id="baseResultMap" type="com.abc.Business.bean.WxbGoods">
+        <result property="goodsName" column="goodsName"></result>
+        <result property="goodsId" column="goodsId"></result>
+        <result property="skuPrice" column="skuPrice"></result>
+        <result property="skuPmoney" column="skuPmoney"></result>
+        <result property="orderNo" column="orderNo"></result>
+        <result property="state" column="state"></result>
+        <result property="toped" column="toped"></result>
+        <result property="recomed" column="recomed"></result>
+        <result property="createTime" column="createTime"></result>
     </resultMap>
-    <select id="findAllProduct" resultMap="rm">
-        select * from wxb_good
+    <select id="findAllGoodsById" resultMap="baseResultMap">
+        SELECT goods_name AS goodsName,wxb_goods.goods_id AS goodsId,wxb_good_sku2.`sku_price` AS skuPrice,wxb_good_sku2.`sku_name` AS skuName,
+        wxb_good_sku2.`sku_pmoney` AS skuPmoney,wxb_goods.order_no AS orderNo,wxb_goods.state AS state,
+        wxb_goods.recomed AS recomed,wxb_goods.toped AS toped,create_time AS createTime
+        FROM wxb_goods JOIN wxb_good_sku2
+        ON wxb_goods.`customer_id`=#{customerId}
+        AND wxb_goods.`goods_id`=wxb_good_sku2.`goods_id`
     </select>
+
+    <insert id="insertUser">
+        INSERT INTO wxb_customer(customer_id,customer_name,QQ,wxh,phone,createtime,login_name,login_pwd,state,level)
+        VALUES(#{customerId},#{customerName},#{qq},#{wxh},#{phone},#{createtime},#{loginName},#{loginPwd},#{state},#{level})
+    </insert>
 
 </mapper>

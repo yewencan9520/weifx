@@ -268,7 +268,9 @@ function insertRows(obj, k) {
  *            vl
  * @return {Boolean}
  */
+var qfcount=0;
 function insertRowsc(obj, k) {
+
 	var rowsnumber = obj.rows.length;
 	var cellsnumber = obj.rows[0].cells.length;
 	var now_num = 0;
@@ -286,11 +288,11 @@ function insertRowsc(obj, k) {
 		row.id = k;
 		cell = row.insertCell(i);
 		cell.align='left';
-		if(i==0)idstr = "sku"+rowsnumber;
-		if(i==1)idstr = "cb"+rowsnumber;
-		if(i==2)idstr = "jg"+rowsnumber;
-		if(i==3)idstr = "fc"+rowsnumber;
-		if(i==4)idstr = "kffc"+rowsnumber;
+		if(i==0)idstr = "skuName";
+		if(i==1)idstr = "skuCost";
+		if(i==2)idstr = "skuPrice";
+		if(i==3)idstr = "skuPmoney";
+		if(i==4)idstr = "serviceMoney";
 		if(i!=0){
 		   cell.innerHTML = '<input id="'+idstr+'" onkeyup="checkVal(this);" name="'+idstr+'" style="width:200px" type="text" value="" />';
 		}else{
@@ -300,6 +302,7 @@ function insertRowsc(obj, k) {
 	
 	}
 
+	qfcount++;
 	return true;
 }
 

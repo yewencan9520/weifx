@@ -6,8 +6,8 @@
 
     <!--新增商品信息-->
     <insert id="insertAddProduct" useGeneratedKeys="true" keyColumn="goods_id" keyProperty="goodsId">
-        INSERT INTO wxb_goods(goods_id,type_id,goods_name,goods_pic1,goods_pic2,goods_pic3)
-        VALUES (#{goodsId},#{typeId},#{goodsName},#{goodsPic1},#{goodsPic2},#{goodsPic3})
+        INSERT INTO wxb_goods(order_no,customer_id,goods_id,type_id,goods_name,goods_pic1,goods_pic2,goods_pic3,create_time)
+        VALUES (#{orderNo},#{customerId},#{goodsId},#{typeId},#{goodsName},#{goodsPic1},#{goodsPic2},#{goodsPic3},#{createTime})
     </insert>
 
     <!--新增套餐信息-->
@@ -18,7 +18,7 @@
         </foreach>
     </insert>
 
-    <resultMap id="rm" type="com.abc.platform.bean.WxbGoods">
+    <resultMap id="baseResultMap" type="com.abc.platform.bean.WxbGoods">
         <result property="goodsName" column="goodsName"></result>
         <result property="goodsPic1" column="goodsPic1"></result>
         <result property="skuPrice" column="skuPrice"></result>
@@ -28,7 +28,7 @@
         <result property="recomed" column="recomed"></result>
         <result property="customerId" column="customerName"></result><!--商户名-->
     </resultMap>
-    <select id="findAllGoodsByPage" resultMap="rm">
+    <select id="findAllGoods" resultMap="baseResultMap">
         SELECT
         goods_name AS goodsName,
 	    wxb_customer.customer_name AS customerName,
@@ -41,7 +41,6 @@
         FROM wxb_goods
         LEFT JOIN wxb_customer
         ON wxb_goods.`customer_id`=wxb_customer.`customer_id`
-        limit #{currentPage},3
     </select>
 
     <update id="updateSkuTopById">
@@ -64,5 +63,21 @@
         INSERT INTO wxb_customer(customer_id,customer_name,QQ,wxh,phone,createtime,login_name,login_pwd,state,level)
         VALUES(#{customerId},#{customerName},#{qq},#{wxh},#{phone},#{createtime},#{loginName},#{loginPwd},#{state},#{level})
     </insert>
+
+    <select id="findUserById" resultType="com.abc.platform.bean.WxbCustomer">
+        SELECT customer_id AS customerId,state,login_name AS loginName,customer_name AS customerName,LEVEL,wxh,qq,phone,createtime
+        FROM wxb_customer
+        WHERE customer_id=#{cId}
+    </select>
+
+    <update id="updateUser">
+        update wxb_customer set customer_name=#{customerName},QQ=#{qq},wxh=#{wxh},phone=#{phone},update_time=#{updateTime},
+        login_name=#{loginName},login_pwd=#{loginPwd},state=#{state},level=#{level}
+        where customer_id=#{customerId}
+    </update>
+
+    <delete id="deleteUser">
+        delete from wxb_customer where customer_id=#{customerId}
+    </delete>
 
 </mapper>

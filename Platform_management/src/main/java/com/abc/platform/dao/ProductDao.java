@@ -3,7 +3,6 @@ package com.abc.platform.dao;
 import com.abc.platform.bean.WxbCustomer;
 import com.abc.platform.bean.WxbGoodSku2;
 import com.abc.platform.bean.WxbGoods;
-import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public interface ProductDao {
 
     void insertAddSku(@Param("list") List<WxbGoodSku2> list, @Param("goodsId") String goodsId);
 
-    List<PageInfo> findAllGoodsByPage(Integer currentPage);
+    List<WxbGoods> findAllGoods();
 
     int updateSkuTopById(@Param("top") int top,@Param("goodsId") String goodsId);
 
@@ -24,6 +23,13 @@ public interface ProductDao {
 
     List<WxbCustomer> findAllCustomer();
 
+    WxbCustomer findUserById(String cId);
+
     void insertUser(WxbCustomer customer);
+
+    void updateUser(WxbCustomer customer);
+
+    void deleteUser(String customerId);
+
 
 }

@@ -3,7 +3,7 @@ package com.abc.platform.service;
 import com.abc.platform.bean.JsonResult;
 import com.abc.platform.bean.ResultOv;
 import com.abc.platform.bean.WxbCustomer;
-import com.github.pagehelper.PageInfo;
+import com.abc.platform.bean.WxbGoods;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,7 +15,7 @@ public interface ProductDaoService {
 
     void insertData(ResultOv resultOv) throws Exception;
 
-    List<PageInfo> pageGInfo(Integer currentPage);
+    List<WxbGoods>  findAllGoods();
 
     int updateSkuTopById(@Param("top") int top, @Param("goodsId") String goodsId);
 
@@ -25,6 +25,12 @@ public interface ProductDaoService {
 
     List<WxbCustomer> findAllCustomer();
 
+    WxbCustomer findUserById(String cId);
+
     void insertUser(WxbCustomer customer);
+
+    void updateUser(WxbCustomer customer);
+
+    void deleteUser(String customerId);
 
 }

@@ -16,14 +16,8 @@ public class PageController {
     @RequestMapping("index")
     public String toindex(){ return "index"; }
 
-    @RequestMapping("goods_info")
-    public String toGoodInfo(){
-        return "goods_info";
-    }
+    @RequestMapping("goodsAdd")
+    public String togoodsAdd(){ return "goodsAdd"; }
 
-    @RequestMapping("goods_add")
-    public String toGoodAdd(){
-        return "goods_add";
-    }
 
 }

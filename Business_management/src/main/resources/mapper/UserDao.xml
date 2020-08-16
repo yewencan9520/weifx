@@ -5,8 +5,8 @@
 <mapper namespace="com.abc.Business.dao.UserDao">
 
     <select id="findUser" resultType="com.abc.Business.bean.WxbCustomer">
-        SELECT login_name AS loginName,login_pwd AS loginPwd,customer_id AS customerId,customer_name AS customerName
-        FROM wxb_customer WHERE login_name=#{username}
+        SELECT login_name AS loginName,customer_id AS customerId,customer_name AS customerName
+        FROM wxb_customer WHERE login_name=#{username} AND login_pwd=#{pwd}
     </select>
 
 </mapper>

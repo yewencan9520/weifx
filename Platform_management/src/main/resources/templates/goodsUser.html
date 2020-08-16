@@ -61,7 +61,7 @@
                                         <input type="checkbox" value="*" id="dg1_AllCheck"
                                                onclick="DataGrid.onAllCheckClick(&#39;dg1&#39;)">
                                     </td>
-                                    <td width="5%" align="center">序号</td>
+                                    <td align="center" width="5%">序号</td>
                                     <td align="center" width="10%"><b>状态</b></td>
                                     <td align="center" width="15%"><b>登录账号</b></td>
                                     <td align="center" width="20%"><b>商户名称</b></td>
@@ -74,7 +74,7 @@
 
                                 <tr th:each="cus,item:${customer}">
                                     <td>
-                                        <input type="checkbox" name="dg1_RowCheck3" id="dg1_RowCheck1" th:value="${cus['customerId']}">
+                                        <input type="checkbox" name="dg1_RowCheck0" id="dg1_RowCheck0" th:value="${cus['customerId']}">
                                     </td>
 
                                     <td align="center" th:text="${item.count}">序号</td>
@@ -175,38 +175,42 @@
         $("#content").load("page/gUserAdd");
     }
     function update1() {
-        var goodsId;
-        $("input[name='dg1_RowCheck3']").each(function () {
-            if ($(this).is(":checked")) {
-                goodsId = $(this).val();
+        var cId;
+        $("input[name='dg1_RowCheck0']").each(function () {
+            if($(this).is(":checked")){
+                cId=$(this).val();
                 return;
             }
         });
-        $.ajax({
-            url: "tops?goodsId=" + goodsId,
-            method: "get",
-            success: function (data) {
-                alert(data.obj),
-                    $("#content").load("gInfo");
-            }
-        });
+        if(cId=="undefined"){
+            alert("请选择要操作的用户")
+            return;
+        }else{
+            $("#content").load("gUserUpdate?cId="+cId);
+        }
+
     }
     function delete1() {
-        var goodsId;
-        $("input[name='dg1_RowCheck3']").each(function () {
-            if ($(this).is(":checked")) {
-                goodsId = $(this).val();
-                return;
-            }
-        });
-        $.ajax({
-            url: "tops?goodsId=" + goodsId,
-            method: "get",
-            success: function (data) {
-                alert(data.obj),
-                    $("#content").load("gInfo");
-            }
-        });
+        if (confirm("你确定移除该商户吗？")) {
+            var cId;
+            $("input[name='dg1_RowCheck0']").each(function () {
+                if($(this).is(":checked")){
+                    cId=$(this).val();
+                    return;
+                }
+            });
+            $.ajax({
+                url:"deleteUser?customerId="+cId,
+                method:"get",
+                success:function (data) {
+                    alert(data.obj),
+                        $("#content").load("gUser");
+                }
+            });
+        }
+        else {
+            alert("点击了取消");
+        }
     }
 </script>
 

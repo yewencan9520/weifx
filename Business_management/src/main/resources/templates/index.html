@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<base th:href="${#request.getContextPath()}+'/'">
+    <base th:href="${#request.getContextPath()}+'/'">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="css/default.css" rel="stylesheet" id="lhgdialoglink">
-		
+
     <title>商户后台管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- head start-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/font.css">
+<!--    <link rel="stylesheet" href="css/font.css">-->
     <link rel="stylesheet" href="css/ace.min.css">
     <link rel="stylesheet" href="css/ace-rtl.min.css">
     <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="css/jquery.gritter.css">
+    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
     <link type="text/css" rel="stylesheet" href="css/public.css">
     <script src="js/ace-extra.min.js"></script>
     <!-- 系统共用js文件 -->
-    <link rel="stylesheet" type="text/css" href="js/ymPrompt.css">
+    <link rel="stylesheet" type="text/css" href="css/ymPrompt.css">
     <script type="text/javascript" src="js/ymPrompt.js"></script>
     <script type="text/javascript" src="js/public.js"></script>
     <script type="text/javascript" src="js/publics.js"></script>
@@ -33,7 +34,7 @@
             margin-top: 0px;
             margin-right: 0px;
             margin-bottom: 0px;
-            background-image: url(img/main_bg.jpg);
+            background-image: url(/img/main_bg.jpg);
         }
     </style>
     <link href="css/WdatePicker.css" rel="stylesheet" type="text/css">
@@ -107,7 +108,7 @@
 
     <div class="navbar-container" id="navbar-container">
         <div class="navbar-header pull-left">
-            <a href="https://javen666.com/wxb/cust/index" class="navbar-brand">
+            <a href="http://localhost:8081/cust/index" class="navbar-brand">
                 <small>
                     <i class="icon-leaf"></i>
                     微信公众号盈利平台-商户后台管理
@@ -115,39 +116,31 @@
             </a><!-- /.brand -->
         </div><!-- /.navbar-header -->
 
-        <div class="navbar-header pull-right" role="navigation">
+        <div th:each="user,item:${cUser}" class="navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
-
                 <li class="light-blue">
-                    <a data-toggle="dropdown" href="https://javen666.com/wxb/cust/index#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="css/user.jpg" alt="Jason&#39;s Photo">
-                        <span class="user-info">
-									<small>欢迎您,</small>
-									ss123456
-								</span>
-
+                    <a data-toggle="dropdown" href="http://localhost:8081/cust/index#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="img/user.jpg" alt="Jason&#39;s Photo">
+                        <span class="user-info" th:text="${user['customerName']}"><small>欢迎您,</small>123456</span>
+                        <input type="hidden" id="customerId" th:value="${user['customerId']}">
                         <i class="icon-caret-down"></i>
                     </a>
-
                     <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a href="https://javen666.com/wxb/cust/chpwd">
+                            <a href="http://localhost:8081/cust/chpwd">
                                 <i class="icon-cog"></i>
                                 修改密码
                             </a>
                         </li>
-
                         <li>
-                            <a href="https://javen666.com/wxb/cust/setting">
+                            <a href="http://localhost:8081/cust/setting">
                                 <i class="icon-user"></i>
                                 个人资料
                             </a>
                         </li>
-
                         <li class="divider"></li>
-
                         <li>
-                            <a href="https://javen666.com/wxb/cust/logout">
+                            <a href="http://localhost:8081/cust/logout">
                                 <i class="icon-off"></i>
                                 退出登录
                             </a>
@@ -158,7 +151,6 @@
         </div><!-- /.navbar-header -->
     </div><!-- /.container -->
     <!-- head over-->
-
 </div>
 
 <div class="main-container" id="main-container">
@@ -168,15 +160,11 @@
         } catch (e) {
         }
     </script>
-
     <div class="main-container-inner">
-        <a class="menu-toggler" id="menu-toggler" href="https://javen666.com/wxb/cust/index#">
+        <a class="menu-toggler" id="menu-toggler" href="http://localhost:8081/cust/index#">
             <span class="menu-text"></span>
         </a>
-
         <!-- menu start-->
-
-
         <div class="sidebar" id="sidebar">
             <script type="text/javascript">
                 try {
@@ -184,22 +172,18 @@
                 } catch (e) {
                 }
             </script>
-
             <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                 <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-                    <button class="btn btn-success" onclick="window.location.href=&#39;/wxb/cust/report/good&#39;">
+                    <button class="btn btn-success" onclick="window.location.href=&#39;/cust/report/good&#39;">
                         <i class="icon-signal"></i>
                     </button>
-
-                    <button class="btn btn-info" onclick="window.location.href=&#39;/wxb/cust/setting&#39;">
+                    <button class="btn btn-info" onclick="window.location.href=&#39;/cust/setting&#39;">
                         <i class="icon-pencil"></i>
                     </button>
-
-                    <button class="btn btn-warning" onclick="window.location.href=&#39;/wxb/cust/order/count/1&#39;">
+                    <button class="btn btn-warning" onclick="window.location.href=&#39;/cust/order/count/1&#39;">
                         <i class="icon-group"></i>
                     </button>
-
-                    <button class="btn btn-danger" onclick="window.location.href=&#39;/wxb/cust/chpwd&#39;">
+                    <button class="btn btn-danger" onclick="window.location.href=&#39;/cust/chpwd&#39;">
                         <i class="icon-cogs"></i>
                     </button>
                 </div>
@@ -217,152 +201,126 @@
 
             <ul class="nav nav-list">
                 <li class="active">
-                    <a href="https://javen666.com/wxb/cust/index">
+                    <a href="page/index">
                         <i class="icon-home"></i>
-                        <span class="menu-text"> 系统首页 </span>
+                        <span class="menu-text">系统首页</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="https://javen666.com/wxb/cust/index#" class="dropdown-toggle">
+                    <a href="" class="dropdown-toggle">
                         <i class="icon-list"></i>
-                        <span class="menu-text"> 商品管理 </span>
-
+                        <span class="menu-text">商品管理</span>
                         <b class="arrow icon-angle-down"></b>
                     </a>
 
                     <ul class="submenu">
                         <li>
-                            <a href="https://javen666.com/wxb/cust/goods/list">
-                                <i class="icon-double-angle-right"></i>
-                                商品信息
+                            <a onclick="pInfo()">
+                                <i class="icon-double-angle-right"></i>商品信息
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/goods/add">
-                                <i class="icon-pencil"></i>
-                                增加商品
+                            <a onclick="pAdd()">
+                                <i class="icon-pencil"></i>增加商品
                             </a>
                         </li>
                         <li>
-                            <a href="https://javen666.com/wxb/cust/goods/copy/list">
-                                <i class="icon-double-angle-right"></i>
-                                商品文案
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="https://javen666.com/wxb/cust/goods/copy/add?tp=0">
-                                <i class="icon-pencil"></i>
-                                增加微信文案
+                            <a href="http://localhost:8081/cust/goods/copy/list">
+                                <i class="icon-double-angle-right"></i>商品文案
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/goods/copy/add?tp=1">
-                                <i class="icon-pencil"></i>
-                                增加站内文案
+                            <a href="http://localhost:8081/cust/goods/copy/add?tp=0">
+                                <i class="icon-pencil"></i>增加微信文案
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/goods/copy/add?tp=2">
-                                <i class="icon-pencil"></i>
-                                增加空间文案
+                            <a href="http://localhost:8081/cust/goods/copy/add?tp=1">
+                                <i class="icon-pencil"></i>增加站内文案
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://localhost:8081/cust/goods/copy/add?tp=2">
+                                <i class="icon-pencil"></i>增加空间文案
                             </a>
                         </li>
                     </ul>
                 </li>
-
                 <li>
-                    <a href="https://javen666.com/wxb/cust/index#" class="dropdown-toggle">
+                    <a href="http://localhost:8081/cust/index#" class="dropdown-toggle">
                         <i class="icon-tag"></i>
-                        <span class="menu-text"> 订单管理 </span>
-
+                        <span class="menu-text">订单管理</span>
                         <b class="arrow icon-angle-down"></b>
                     </a>
-
                     <ul class="submenu">
-
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/list">
-                                <i class="icon-double-angle-right"></i>
-                                全部的订单
+                            <a href="http://localhost:8081/cust/order/list">
+                                <i class="icon-double-angle-right"></i>全部的订单
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://localhost:8081/cust/order/list/1">
+                                <i class="icon-double-angle-right"></i>已下单订单
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/list/1">
-                                <i class="icon-double-angle-right"></i>
-                                已下单订单
+                            <a href="http://localhost:8081/cust/order/list/9">
+                                <i class="icon-double-angle-right"></i>待跟进订单
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/list/9">
-                                <i class="icon-double-angle-right"></i>
-                                待跟进订单
+                            <a href="http://localhost:8081/cust/order/list/2">
+                                <i class="icon-double-angle-right"></i>待发货订单
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/list/2">
-                                <i class="icon-double-angle-right"></i>
-                                待发货订单
+                            <a href="http://localhost:8081/cust/order/list/3">
+                                <i class="icon-double-angle-right"></i>已取消订单
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/list/3">
-                                <i class="icon-double-angle-right"></i>
-                                已取消订单
+                            <a href="http://localhost:8081/cust/order/list/4">
+                                <i class="icon-double-angle-right"></i>已发货订单
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/list/4">
-                                <i class="icon-double-angle-right"></i>
-                                已发货订单
+                            <a href="http://localhost:8081/cust/order/list/5">
+                                <i class="icon-double-angle-right"></i>已结算订单
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/list/5">
-                                <i class="icon-double-angle-right"></i>
-                                已结算订单
+                            <a href="http://localhost:8081/cust/order/list/6">
+                                <i class="icon-double-angle-right"></i>已拒收订单
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/list/6">
-                                <i class="icon-double-angle-right"></i>
-                                已拒收订单
+                            <a href="http://localhost:8081/cust/order/list/7">
+                                <i class="icon-double-angle-right"></i>已签收订单
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/list/7">
-                                <i class="icon-double-angle-right"></i>
-                                已签收订单
+                            <a href="http://localhost:8081/cust/order/list/8">
+                                <i class="icon-double-angle-right"></i>已退货订单
                             </a>
                         </li>
-
-                        <li>
-                            <a href="https://javen666.com/wxb/cust/order/list/8">
-                                <i class="icon-double-angle-right"></i>
-                                已退货订单
-                            </a>
-                        </li>
-
                     </ul>
                 </li>
-
-
                 <li>
-                    <a href="https://javen666.com/wxb/cust/index#" class="dropdown-toggle">
+                    <a href="http://localhost:8081/cust/index#" class="dropdown-toggle">
                         <i class="icon-bar-chart"></i>
-                        <span class="menu-text"> 统计报表</span>
+                        <span class="menu-text">统计报表</span>
 
                         <b class="arrow icon-angle-down"></b>
                     </a>
@@ -370,65 +328,58 @@
                     <ul class="submenu">
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/report/good">
-                                <i class="icon-double-angle-right"></i>
-                                商品销售统计
+                            <a href="http://localhost:8081/cust/report/good">
+                                <i class="icon-double-angle-right"></i>商品销售统计
                             </a>
-                        </li>
-
+                        </li>c
                     </ul>
                 </li>
-
                 <li>
-                    <a href="https://javen666.com/wxb/cust/index#" class="dropdown-toggle">
+                    <a href="http://localhost:8081/cust/index#" class="dropdown-toggle">
                         <i class="icon-credit-card"></i>
-
-                        <span class="menu-text">
-					财务管理
+                        <span class="menu-text">财务管理
 				</span>
-
                         <b class="arrow icon-angle-down"></b>
                     </a>
-
                     <ul class="submenu">
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/count/1">
+                            <a href="http://localhost:8081/cust/order/count/1">
                                 <i class="icon-double-angle-right"></i>
                                 待结算流水
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/count/2">
+                            <a href="http://localhost:8081/cust/order/count/2">
                                 <i class="icon-double-angle-right"></i>
                                 已结算流水
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/count/3">
+                            <a href="http://localhost:8081/cust/order/count/3">
                                 <i class="icon-double-angle-right"></i>
                                 已返款流水
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/money">
+                            <a href="http://localhost:8081/cust/order/money">
                                 <i class="icon-double-angle-right"></i>
                                 财务返款单
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/order/paylog">
+                            <a href="http://localhost:8081/cust/order/paylog">
                                 <i class="icon-double-angle-right"></i>
                                 支付宝记录
                             </a>
                         </li>
 
                         <!-- <li >
-                            <a href="/wxb/cust/charge/list">
+                            <a href="/cust/charge/list">
                                 <i class="icon-double-angle-right"></i>
                                 消费与充值
                             </a>
@@ -436,8 +387,8 @@
                     </ul>
                 </li>
 
-                <li class="">
-                    <a href="https://javen666.com/wxb/cust/index#" class="dropdown-toggle">
+                <li>
+                    <a href="http://localhost:8081/cust/index#" class="dropdown-toggle">
                         <i class="icon-group"></i>
 
                         <span class="menu-text">
@@ -447,16 +398,16 @@
                         <b class="arrow icon-angle-down"></b>
                     </a>
 
-                    <ul class="submenu" style="display: none;">
+                    <ul class="submenu">
                         <li>
-                            <a href="https://javen666.com/wxb/cust/setting">
+                            <a href="http://localhost:8081/cust/setting">
                                 <i class="icon-double-angle-right"></i>
                                 基本信息
                             </a>
                         </li>
 
                         <li>
-                            <a href="https://javen666.com/wxb/cust/chpwd">
+                            <a href="http://localhost:8081/cust/chpwd">
                                 <i class="icon-double-angle-right"></i>
                                 修改密码
                             </a>
@@ -482,7 +433,7 @@
         </div>
         <!-- menu over-->
 
-        <div class="main-content">
+        <div class="main-content" id="content">
             <div class="breadcrumbs" id="breadcrumbs">
                 <script type="text/javascript">
                     try {
@@ -494,7 +445,7 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home home-icon"></i>
-                        <a href="https://javen666.com/wxb/cust/index">系统首页</a>
+                        <a href="http://localhost:8081/cust/index">系统首页</a>
                     </li>
                 </ul><!-- .breadcrumb -->
 
@@ -554,11 +505,11 @@
 
                     <h4>
                         <i class="icon-bar-chart blue"></i>
-                        您总共产生<label class="red">0</label>条订单
-                        &nbsp;&nbsp;销售总额：￥<label class="red">0.0</label>元
+                        您总共产生<label class="red">5</label>条订单
+                        &nbsp;&nbsp;销售总额：￥<label class="red">50.0</label>元
                         &nbsp;&nbsp;成本：￥<label class="red">0.0</label>元
                         &nbsp;&nbsp;预计分成：￥<label class="red">0.0</label>元
-                        &nbsp;&nbsp;预计盈利：￥<label class="red">0</label>元
+                        &nbsp;&nbsp;预计盈利：￥<label class="red">50.0</label>元
                     </h4>
 
                 </div>
@@ -571,15 +522,14 @@
 
     </div><!-- /.main-container-inner -->
 
-    <a href="https://javen666.com/wxb/cust/index#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+    <a href="http://localhost:8081/cust/index#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
         <i class="icon-double-angle-up icon-only bigger-110"></i>
     </a>
 </div><!-- /.main-container -->
 
 <!-- menu start-->
 
-<script src="js/bootstrap.min.js"></script>
-<script src="js/typeahead-bs2.min.js"></script>
+
 <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <script src="js/bootbox.min.js"></script>
@@ -633,11 +583,21 @@
             buttons: {
                 "danger": {
                     "label": "返回登录", "className": "btn-sm btn-danger", "callback": function () {
-                        window.location.href = "/wxb/user/login";
+                        window.location.href = "/user/login";
                     }
                 }
             }
         });
+    }
+</script>
+<script>
+    var customerId=$("#customerId").val();
+    function pInfo() {
+
+        $("#content").load("gInfo?customerId="+customerId);
+    }
+    function pAdd() {
+        $("#content").load("page/goodsAdd?customerId="+customerId);
     }
 </script>
 

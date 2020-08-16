@@ -3,9 +3,9 @@ package com.abc.platform.service.Impl;
 import com.abc.platform.bean.*;
 import com.abc.platform.dao.ProductDao;
 import com.abc.platform.service.ProductDaoService;
-import com.github.pagehelper.PageInfo;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,17 +31,18 @@ public class ProductDaoServiceImpl implements ProductDaoService {
         String gId = String.valueOf(new Random().nextInt(100000000));
         WxbGoods wxbGood = resultOv.getWxbGood();
         wxbGood.setGoodsId(gId);
+        wxbGood.setCreateTime(new Timestamp(System.currentTimeMillis()));
         AddProduct(wxbGood);
         AddSku(resultOv.getSku2List(),wxbGood.getGoodsId());
     }
 
     /**
-     * 商品信息管理首页+分页
+     * 商品信息管理首页
      */
     @Override
-    public List<PageInfo> pageGInfo(Integer currentPage) {
-        List<PageInfo> pages = ProductDao.findAllGoodsByPage(currentPage);
-        return pages;
+    public List<WxbGoods>  findAllGoods() {
+        List<WxbGoods>  allGoods = ProductDao.findAllGoods();
+        return allGoods;
     }
 
     /**
@@ -69,18 +70,56 @@ public class ProductDaoServiceImpl implements ProductDaoService {
         return states;
     }
 
+    /**
+     * 查询所有的商户
+     */
     @Override
     public List<WxbCustomer> findAllCustomer() {
         List<WxbCustomer> customer = ProductDao.findAllCustomer();
         return customer;
     }
 
+    /**
+     * 查询商户
+     */
+    @Override
+    public WxbCustomer findUserById(String cId) {
+        WxbCustomer customer = ProductDao.findUserById(cId);
+        return customer;
+    }
+
+    /**
+     * 新增商户
+     */
     @Override
     public void insertUser(WxbCustomer customer) {
+        //生成ID
         String cId = String.valueOf(new Random().nextInt(10000000));
         customer.setCustomerId(cId);
+        //生成时间
         customer.setCreatetime(new Timestamp(System.currentTimeMillis()));
+        //密码加密
+        String pwd = new Md5Hash(customer.getLoginPwd()).toHex();
+        customer.setLoginPwd(pwd);
         ProductDao.insertUser(customer);
+    }
+
+    /**
+     * 修改商户
+     */
+    @Override
+    public void updateUser(WxbCustomer customer) {
+        //密码加密
+        String pwd = new Md5Hash(customer.getLoginPwd()).toHex();
+        customer.setLoginPwd(pwd);
+        //重置时间
+        customer.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+        ProductDao.updateUser(customer);
+    }
+
+    @Override
+    public void deleteUser(String customerId) {
+        ProductDao.deleteUser(customerId);
     }
 
     /**

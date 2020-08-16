@@ -22,7 +22,8 @@
 </head>
 <body>
 <div>
-    <table width="100%" border="0" cellspacing="6" cellpadding="0" style="border-collapse: separate; border-spacing: 6px;">
+    <table width="100%" border="0" cellspacing="6" cellpadding="0"
+           style="border-collapse: separate; border-spacing: 6px;">
         <tr>
             <td valign="middle" class="blockTd">
                 <h2>订单信息列表</h2>
@@ -53,14 +54,14 @@
                 <table class="table table-bordered">
                     <tbody>
                     <tr type="head">
-                        <td><input type="checkbox" width="5%"></td>
-                        <td align="center" width="5%"><b>ID</b></td>
-                        <td align="center" width="8%"><b>操 作</b></td>
-                        <td align="center" width="5%"><b>跟单员</b></td>
-                        <td align="center" width="12%"><b>商品信息</b></td>
-                        <td align="center" width="6%"><b>推荐人</b></td>
+                        <td><input type="checkbox" width="3%"></td>
+                        <td align="center" width="3%"><b>ID</b></td>
+                        <td align="center" width="10%"><b>操 作</b></td>
+                        <td align="center" width="6%"><b>跟单员</b></td>
+                        <td align="center" width="13%"><b>商品信息</b></td>
+                        <td align="center" width="7%"><b>推荐人</b></td>
                         <td align="center" width="20%"><b>收货信息</b></td>
-                        <td align="center" width="15%"><b>时间</b></td>
+                        <td align="center" width="14%"><b>时间</b></td>
                         <td align="center" width="6%"><b>类 型</b></td>
                         <td align="center" width="5%"><b>状 态</b></td>
                         <td align="center" width="6%"><b>付款方式</b></td>
@@ -69,9 +70,19 @@
                     <tr th:each="ord,item:${order}">
                         <td><input type="checkbox" id="Check"></td>
 
-                        <td class="center"  th:text="${ord['oid']}">ID</td>
+                        <td class="center" th:text="${ord['oid']}">ID</td>
 
-                        <td class="center" ></td>
+                        <td class="center">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                            </button>
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                            </button>
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                            </button>
+                        </td>
 
                         <td class="left" th:text="${ord['customerName']}"></td>
                         <td class="left">
@@ -94,10 +105,12 @@
                             <font color="#1e90ff" th:if="${ord['orderType']}==1">代客下单</font>
                             <font color="red" th:if="${ord['orderType']}==2">异常订单</font>
                         </td>
-                        <td class="left" >
-                            <span th:if="${ord['state']}==0">已下单</span>
-                            <span th:if="${ord['state']}==1">已支付</span>
-                            <span th:if="${ord['state']}==0">订单取消</span>
+                        <td class="left">
+                            <span th:if="${ord['state']}==1">待结算</span>
+                            <span th:if="${ord['state']}==2">已结算</span>
+                            <span th:if="${ord['state']}==3">待返款</span>
+                            <span th:if="${ord['state']}==4">已返款</span>
+                            <span th:if="${ord['state']}==5">退  款</span>
                         </td>
                         <td class="left">
                             <font color="#1e90ff" th:if="${ord['payType']}==0">支付宝</font>
@@ -188,6 +201,7 @@
     function expOrderAll() {
         window.location.href = "/wxb/order!exportOrder.ct?tempid=1&state_id=";
     }
+
     //条件导出
     function goTJExport() {
         var good_id = document.getElementById('good_id').value;
@@ -392,6 +406,7 @@
             }
         });
     }
+
     function goBatchCheck() {
         var arr = DataGrid.getSelectedValue("dg1");
         if (arr == null || arr.length == 0) {

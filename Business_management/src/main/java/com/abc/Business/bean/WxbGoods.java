@@ -7,15 +7,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WxbGood {
+public class WxbGoods {
 
-  private long goodsId;
+  private String goodsId;
   private String goodsName;
   private String customerId;
   private String goodsPic1;
   private String goodsPic2;
   private String goodsPic3;
   private String promoteDesc;
+  private String skuName;
   private String skuTitle;
   private String skuCost;
   private String skuPrice;

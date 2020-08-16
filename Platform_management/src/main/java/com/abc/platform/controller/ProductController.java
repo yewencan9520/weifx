@@ -4,8 +4,8 @@ package com.abc.platform.controller;
 import com.abc.platform.bean.JsonResult;
 import com.abc.platform.bean.ResultOv;
 import com.abc.platform.bean.WxbCustomer;
+import com.abc.platform.bean.WxbGoods;
 import com.abc.platform.service.ProductDaoService;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,10 +26,10 @@ public class ProductController {
      * 商品信息管理
      */
     @RequestMapping("gInfo")
-    public String goosInfo(String currentPage, Model model){
-        Integer currentpage = getcurrentpage(currentPage);
-        List<PageInfo> pageInfo = ProductDaoService.pageGInfo(currentpage);
-        model.addAttribute("page",pageInfo);
+    public String goosInfo(Model model){
+//        Integer currentpage = getcurrentpage(currentPage);
+        List<WxbGoods>  allGoods = ProductDaoService.findAllGoods();
+        model.addAttribute("page",allGoods);
         return "goodsInfo";
     }
 
@@ -86,6 +86,53 @@ public class ProductController {
         }catch (Exception e){
             jsonResult.setCode(1);
             jsonResult.setObj("新增失败");
+            return jsonResult;
+        }
+    }
+
+    /**
+     * 商户信息管理-修改商户之查询
+     */
+    @RequestMapping("gUserUpdate")
+    public String goodsUserUpdate(String cId, Model model){
+        WxbCustomer customer = ProductDaoService.findUserById(cId);
+        model.addAttribute("upCus",customer);
+        return "goodsUserUpdate";
+    }
+    /**
+     * 商户信息管理-修改商户之保存
+     */
+    @RequestMapping("gUserSaveUpdate")
+    @ResponseBody
+    public JsonResult gUserSaveUpdate(@RequestBody WxbCustomer customer){
+        JsonResult jsonResult = new JsonResult();
+        try{
+            ProductDaoService.updateUser(customer);
+            jsonResult.setCode(0);
+            jsonResult.setObj("修改成功");
+            return jsonResult;
+        }catch (Exception e){
+            jsonResult.setCode(1);
+            jsonResult.setObj("修改失败");
+            return jsonResult;
+        }
+    }
+
+    /**
+     * 商户信息管理-删除商户
+     */
+    @RequestMapping("deleteUser")
+    @ResponseBody
+    public JsonResult deleteUser(String customerId){
+        JsonResult jsonResult = new JsonResult();
+        try{
+            ProductDaoService.deleteUser(customerId);
+            jsonResult.setCode(0);
+            jsonResult.setObj("删除成功");
+            return jsonResult;
+        }catch (Exception e){
+            jsonResult.setCode(1);
+            jsonResult.setObj("删除失败");
             return jsonResult;
         }
     }
@@ -204,15 +251,15 @@ public class ProductController {
             return jsonResult;
         }
     }
-
-    /**
-     *判断currentpage值
-     */
-    public Integer getcurrentpage(String currentPage){
-        if(currentPage==null){
-            currentPage="0";
-        }
-        Integer currentPage1=Integer.parseInt(currentPage);
-        return currentPage1;
-    }
+//
+//    /**
+//     *判断currentpage值
+//     */
+//    public Integer getcurrentpage(String currentPage){
+//        if(currentPage==null){
+//            currentPage="0";
+//        }
+//        Integer currentPage1=Integer.parseInt(currentPage);
+//        return currentPage1;
+//    }
 }
