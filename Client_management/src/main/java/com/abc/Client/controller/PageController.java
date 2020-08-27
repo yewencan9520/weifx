@@ -9,40 +9,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PageController {
 
     @RequestMapping("login")
-    public String toLogin(){
+    public String toLogin() {
         return "login";
     }
 
     @RequestMapping("index")
-    public String toindex(){ return "index"; }
+    public String toindex() {
+        return "index";
+    }
 
     @RequestMapping("office")
-    public String toOffice(){
+    public String toOffice() {
         return "office";
     }
 
     @RequestMapping("myOrder")
-    public String tomyOrder(){
+    public String tomyOrder() {
         return "myOrder";
     }
 
     @RequestMapping("order")
-    public String toOrder(){
+    public String toOrder() {
         return "order";
     }
 
     @RequestMapping("orderClose")
-    public String toOrderClose(){
+    public String toOrderClose() {
         return "orderClose";
     }
 
     @RequestMapping("CloseMoney")
-    public String toCloseMoney(){
+    public String toCloseMoney() {
         return "CloseMoney";
     }
 
     @RequestMapping("pay")
-    public String toPay(){
+    public String toPay() {
         return "pay";
     }
 

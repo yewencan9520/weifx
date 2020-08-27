@@ -10,7 +10,7 @@
     <!-- head start-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-<!--    <link rel="stylesheet" href="css/font.css">-->
+    <!--    <link rel="stylesheet" href="css/font.css">-->
     <link rel="stylesheet" href="css/ace.min.css">
     <link rel="stylesheet" href="css/ace-rtl.min.css">
     <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
@@ -331,7 +331,8 @@
                             <a href="http://localhost:8081/cust/report/good">
                                 <i class="icon-double-angle-right"></i>商品销售统计
                             </a>
-                        </li>c
+                        </li>
+                        c
                     </ul>
                 </li>
                 <li>
@@ -591,13 +592,15 @@
     }
 </script>
 <script>
-    var customerId=$("#customerId").val();
+    var customerId = $("#customerId").val();
+
     function pInfo() {
 
-        $("#content").load("gInfo?customerId="+customerId);
+        $("#content").load("gInfo?customerId=" + customerId);
     }
+
     function pAdd() {
-        $("#content").load("page/goodsAdd?customerId="+customerId);
+        $("#content").load("page/goodsAdd?customerId=" + customerId);
     }
 </script>
 

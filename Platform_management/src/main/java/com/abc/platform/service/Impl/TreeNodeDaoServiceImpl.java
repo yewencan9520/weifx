@@ -15,6 +15,7 @@ public class TreeNodeDaoServiceImpl implements TreeNodeDaoService {
 
     @Autowired
     private TreeNodeDao treeNodeDao;
+
     @Override
     public TreeNodeBean findTreeNodeByUsername(String username) {
         TreeNodeBean beans = treeNodeDao.findTreeNodeByUsername(username);
@@ -30,7 +31,7 @@ public class TreeNodeDaoServiceImpl implements TreeNodeDaoService {
         for (int i = 0; i < nodes.size(); i++) {
             TreeNodeBean nodeBean = nodes.get(i);
             String text = nodeBean.getText();
-            if(roles.contains(text)){
+            if (roles.contains(text)) {
                 State state = new State();
                 state.setChecked(true);
                 nodeBean.setState(state);
@@ -39,7 +40,7 @@ public class TreeNodeDaoServiceImpl implements TreeNodeDaoService {
             for (int j = 0; j < nodes1.size(); j++) {
                 TreeNodeBean nodeBean1 = nodes1.get(j);
                 String text1 = nodeBean1.getText();
-                if(roles.contains(text1)){
+                if (roles.contains(text1)) {
                     State state = new State();
                     state.setChecked(true);
                     nodeBean1.setState(state);
@@ -49,7 +50,7 @@ public class TreeNodeDaoServiceImpl implements TreeNodeDaoService {
                     for (int k = 0; k < nodes2.size(); k++) {
                         TreeNodeBean nodeBean2 = nodes2.get(k);
                         String text2 = nodeBean2.getText();
-                        if(roles.contains(text2)){
+                        if (roles.contains(text2)) {
                             State state = new State();
                             state.setChecked(true);
                             nodeBean2.setState(state);

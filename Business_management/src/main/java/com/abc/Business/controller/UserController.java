@@ -19,15 +19,15 @@ public class UserController {
 
     @RequestMapping("Blogin")
     @ResponseBody
-    public JsonResult login(String username, String password, HttpSession session){
+    public JsonResult login(String username, String password, HttpSession session) {
         JsonResult jsonResult = new JsonResult();
         try {
-            WxbCustomer user = userDaoService.findUser(username,password);
-            session.setAttribute("user",user);
+            WxbCustomer user = userDaoService.findUser(username, password);
+            session.setAttribute("user", user);
             jsonResult.setCode(0);
             jsonResult.setObj(user.getCustomerId());
             return jsonResult;
-        }catch (Exception e){
+        } catch (Exception e) {
             jsonResult.setCode(1);
             jsonResult.setObj("账号或密码错误，请重新登陆！");
             return jsonResult;

@@ -6,8 +6,10 @@
 
     <!--新增商品信息-->
     <insert id="insertAddProduct" useGeneratedKeys="true" keyColumn="goods_id" keyProperty="goodsId">
-        INSERT INTO wxb_goods(order_no,customer_id,goods_id,type_id,goods_name,goods_pic1,goods_pic2,goods_pic3,create_time)
-        VALUES (#{orderNo},#{customerId},#{goodsId},#{typeId},#{goodsName},#{goodsPic1},#{goodsPic2},#{goodsPic3},#{createTime})
+        INSERT INTO
+        wxb_goods(order_no,customer_id,goods_id,type_id,goods_name,goods_pic1,goods_pic2,goods_pic3,create_time)
+        VALUES
+        (#{orderNo},#{customerId},#{goodsId},#{typeId},#{goodsName},#{goodsPic1},#{goodsPic2},#{goodsPic3},#{createTime})
     </insert>
 
     <!--新增套餐信息-->
@@ -30,7 +32,8 @@
         <result property="createTime" column="createTime"></result>
     </resultMap>
     <select id="findAllGoodsById" resultMap="baseResultMap">
-        SELECT goods_name AS goodsName,wxb_goods.goods_id AS goodsId,wxb_good_sku2.`sku_price` AS skuPrice,wxb_good_sku2.`sku_name` AS skuName,
+        SELECT goods_name AS goodsName,wxb_goods.goods_id AS goodsId,wxb_good_sku2.`sku_price` AS
+        skuPrice,wxb_good_sku2.`sku_name` AS skuName,
         wxb_good_sku2.`sku_pmoney` AS skuPmoney,wxb_goods.order_no AS orderNo,wxb_goods.state AS state,
         wxb_goods.recomed AS recomed,wxb_goods.toped AS toped,create_time AS createTime
         FROM wxb_goods JOIN wxb_good_sku2

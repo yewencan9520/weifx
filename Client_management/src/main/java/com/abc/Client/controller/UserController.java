@@ -17,7 +17,7 @@ public class UserController {
 
     @RequestMapping("Clogin")
     @ResponseBody
-    public JsonResult login(String username, String password, HttpSession session){
+    public JsonResult login(String username, String password, HttpSession session) {
         JsonResult jsonResult = new JsonResult();
         try {
             Subject subject = SecurityUtils.getSubject();
@@ -26,11 +26,11 @@ public class UserController {
             UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, pwd.toHex());
             //登录成功就不会有异常
             subject.login(usernamePasswordToken);
-            session.setAttribute("username",username);
+            session.setAttribute("username", username);
             jsonResult.setCode(0);
             jsonResult.setObj(username);
             return jsonResult;
-        }catch (Exception e){
+        } catch (Exception e) {
             jsonResult.setCode(1);
             jsonResult.setObj("账号或密码错误，请重新登陆！");
             return jsonResult;

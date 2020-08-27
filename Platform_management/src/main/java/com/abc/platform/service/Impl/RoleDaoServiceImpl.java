@@ -12,6 +12,7 @@ import java.util.List;
 public class RoleDaoServiceImpl implements RoleDaoService {
     @Autowired
     private RoleDao roleDao;
+
     @Override
     public List<SysRole> findRolePage() {
         List<SysRole> rolePage = roleDao.findRolePage();

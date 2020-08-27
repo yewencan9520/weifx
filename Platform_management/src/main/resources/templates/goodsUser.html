@@ -74,7 +74,8 @@
 
                                 <tr th:each="cus,item:${customer}">
                                     <td>
-                                        <input type="checkbox" name="dg1_RowCheck0" id="dg1_RowCheck0" th:value="${cus['customerId']}">
+                                        <input type="checkbox" name="dg1_RowCheck0" id="dg1_RowCheck0"
+                                               th:value="${cus['customerId']}">
                                     </td>
 
                                     <td align="center" th:text="${item.count}">序号</td>
@@ -88,7 +89,7 @@
                                         <a onclick="see(&#39;39976676&#39;)" th:text="${cus['loginName']}">登陆名</a>
                                     </td>
 
-                                    <td align="center"th:text="${cus['customerName']}">商户名称</td>
+                                    <td align="center" th:text="${cus['customerName']}">商户名称</td>
 
                                     <td align="center">
                                         <span style="width:30px;color:gray;" th:if="${cus['level']}==0">非认证商户</span>
@@ -169,46 +170,46 @@
 </script>
 
 
-
 <script>
     function add1() {
         $("#content").load("page/gUserAdd");
     }
+
     function update1() {
         var cId;
         $("input[name='dg1_RowCheck0']").each(function () {
-            if($(this).is(":checked")){
-                cId=$(this).val();
+            if ($(this).is(":checked")) {
+                cId = $(this).val();
                 return;
             }
         });
-        if(cId=="undefined"){
+        if (cId == "undefined") {
             alert("请选择要操作的用户")
             return;
-        }else{
-            $("#content").load("gUserUpdate?cId="+cId);
+        } else {
+            $("#content").load("gUserUpdate?cId=" + cId);
         }
 
     }
+
     function delete1() {
         if (confirm("你确定移除该商户吗？")) {
             var cId;
             $("input[name='dg1_RowCheck0']").each(function () {
-                if($(this).is(":checked")){
-                    cId=$(this).val();
+                if ($(this).is(":checked")) {
+                    cId = $(this).val();
                     return;
                 }
             });
             $.ajax({
-                url:"deleteUser?customerId="+cId,
-                method:"get",
-                success:function (data) {
+                url: "deleteUser?customerId=" + cId,
+                method: "get",
+                success: function (data) {
                     alert(data.obj),
                         $("#content").load("gUser");
                 }
             });
-        }
-        else {
+        } else {
             alert("点击了取消");
         }
     }

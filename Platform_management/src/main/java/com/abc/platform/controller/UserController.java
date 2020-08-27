@@ -21,7 +21,7 @@ public class UserController {
 
     @RequestMapping("login")
     @ResponseBody
-    public JsonResult login(String username, String password){
+    public JsonResult login(String username, String password) {
         JsonResult jsonResult = new JsonResult();
         try {
             Subject subject = SecurityUtils.getSubject();
@@ -33,7 +33,7 @@ public class UserController {
             jsonResult.setCode(0);
             jsonResult.setObj("page/index");
             return jsonResult;
-        }catch (Exception e){
+        } catch (Exception e) {
             jsonResult.setCode(1);
             jsonResult.setObj("账号或密码错误，请重新登陆！");
             return jsonResult;
@@ -42,7 +42,7 @@ public class UserController {
 
     @RequestMapping("tree")
     @ResponseBody
-    public TreeNodeBean treeNode(){
+    public TreeNodeBean treeNode() {
 //        String username = SecurityUtils.getSubject().getPrincipal().toString();
         TreeNodeBean beans = treeNodeDaoService.findTreeNodeByUsername("admin");
         return beans;

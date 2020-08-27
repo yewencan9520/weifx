@@ -12,11 +12,13 @@ class ClientApplicationTests {
 
     @Resource
     private IndexDao indexDao;
+
     @Test
     void contextLoads() {
     }
+
     @Test
-    public void order(){
+    public void order() {
         WxbOrder wxbOrder = new WxbOrder();
         wxbOrder.setOrderId("1");
         wxbOrder.setAddress("2222");

@@ -16,9 +16,9 @@ public class OrderController {
     private OrderDaoService orderDaoService;
 
     @RequestMapping("allOrder")
-    public String AllOrder(Model model){
+    public String AllOrder(Model model) {
         List<WxbOrder> allOrder = orderDaoService.findAllOrder();
-        model.addAttribute("order",allOrder);
+        model.addAttribute("order", allOrder);
         return "order";
     }
 

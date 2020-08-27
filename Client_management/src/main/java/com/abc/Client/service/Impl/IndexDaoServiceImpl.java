@@ -40,7 +40,7 @@ public class IndexDaoServiceImpl implements IndexDaoService {
     @Override
     public void insertOrder(WxbOrder order) {
         order.setOrderTime(new Timestamp(System.currentTimeMillis()));
-        order.setOrderId("or"+String.valueOf(new Random().nextInt(100000))+"der");
+        order.setOrderId("or" + String.valueOf(new Random().nextInt(100000)) + "der");
         indexDao.insertOrder(order);
     }
 }

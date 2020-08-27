@@ -24,9 +24,9 @@ public class ProductController {
     private ProductDaoService productDaoService;
 
     @RequestMapping("toIndex")
-    public String toIndex(HttpSession session,Model model){
+    public String toIndex(HttpSession session, Model model) {
         WxbCustomer user = (WxbCustomer) session.getAttribute("user");
-        model.addAttribute("cUser",user);
+        model.addAttribute("cUser", user);
         return "index";
     }
 
@@ -34,10 +34,10 @@ public class ProductController {
      * 商品信息管理
      */
     @RequestMapping("gInfo")
-    public String goodsInfo(String customerId, Model model){
+    public String goodsInfo(String customerId, Model model) {
 //        Integer currentpage = getcurrentpage(currentPage);
         List<WxbGoods> pageInfo = productDaoService.findAllGoodsById(customerId);
-        model.addAttribute("page",pageInfo);
+        model.addAttribute("page", pageInfo);
         return "goodsInfo";
     }
 
@@ -46,7 +46,7 @@ public class ProductController {
      */
     @RequestMapping("save")
     @ResponseBody
-    public JsonResult saveData(@RequestBody ResultOv resultOv){
+    public JsonResult saveData(@RequestBody ResultOv resultOv) {
         JsonResult jsonResult = new JsonResult();
         try {
             productDaoService.insertData(resultOv);
@@ -64,7 +64,7 @@ public class ProductController {
      */
     @RequestMapping("upload")
     @ResponseBody
-    public JsonResult addProduct(MultipartFile file){
+    public JsonResult addProduct(MultipartFile file) {
         JsonResult jsonResults = productDaoService.insertPic(file);
         return jsonResults;
     }
@@ -74,14 +74,14 @@ public class ProductController {
      */
     @RequestMapping("gUserAdd")
     @ResponseBody
-    public JsonResult goodsUserAdd(@RequestBody WxbCustomer customer){
+    public JsonResult goodsUserAdd(@RequestBody WxbCustomer customer) {
         JsonResult jsonResult = new JsonResult();
-        try{
+        try {
             productDaoService.insertUser(customer);
             jsonResult.setCode(0);
             jsonResult.setObj("新增成功");
             return jsonResult;
-        }catch (Exception e){
+        } catch (Exception e) {
             jsonResult.setCode(1);
             jsonResult.setObj("新增失败");
             return jsonResult;

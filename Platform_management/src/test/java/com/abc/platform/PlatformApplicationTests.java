@@ -23,6 +23,7 @@ class PlatformApplicationTests {
     private ProductDao productDao;
     @Autowired
     private OrderDao orderDao;
+
     @Test
     void contextLoads() {
 
@@ -31,13 +32,14 @@ class PlatformApplicationTests {
     }
 
     @Test
-    public void random(){
+    public void random() {
         Random random = new Random();
         int i = random.nextInt(100000000);
         System.out.println(i);
     }
+
     @Test
-    public void AddDao(){
+    public void AddDao() {
         WxbGoods wxbGood = new WxbGoods();
         wxbGood.setGoodsId("1");
         wxbGood.setTypeId("2");
@@ -49,10 +51,12 @@ class PlatformApplicationTests {
         productDao.insertAddProduct(wxbGood);
 
     }
+
     @Resource
     private RoleDao roleDao;
+
     @Test
-    public void findAllRole(){
+    public void findAllRole() {
         List<SysRole> rolePage = roleDao.findRolePage();
         for (SysRole sysRole : rolePage) {
             System.out.println("===============================");
@@ -60,30 +64,32 @@ class PlatformApplicationTests {
         }
 
     }
+
     @Test
-    public void findAllGoodsByPage(){
-        List<WxbGoods>  allGoods = productDao.findAllGoods();
+    public void findAllGoodsByPage() {
+        List<WxbGoods> allGoods = productDao.findAllGoods();
         System.out.println(allGoods);
     }
 
     @Test
-    public void updata(){
-        productDao.updateSkustatesById(1,"16344265");
+    public void updata() {
+        productDao.updateSkustatesById(1, "16344265");
     }
 
     @Test
-    public void findAllCustomer(){
+    public void findAllCustomer() {
         List<WxbCustomer> customer = productDao.findAllCustomer();
         System.out.println(customer);
     }
+
     @Test
-    public void getTime(){
+    public void getTime() {
         Timestamp time = new Timestamp(System.currentTimeMillis());
         System.out.println(time);
     }
 
     @Test
-    public void findAllOrder(){
+    public void findAllOrder() {
         List<WxbOrder> allOrder = orderDao.findAllOrder();
         System.out.println(allOrder);
     }

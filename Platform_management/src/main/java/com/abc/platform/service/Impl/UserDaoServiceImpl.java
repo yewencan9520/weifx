@@ -11,6 +11,7 @@ public class UserDaoServiceImpl implements UserDaoService {
 
     @Autowired
     private UserDao userDao;
+
     @Override
     public UserInfo findUser(String username) {
         UserInfo user = userDao.findUser(username);

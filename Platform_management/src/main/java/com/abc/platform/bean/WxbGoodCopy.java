@@ -9,19 +9,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class WxbGoodCopy {
 
-  private String copyTitle;
-  private String copyLink;
-  private String copyContent;
-  private String customerId;
-  private Integer orderNo;
-  private Integer typeId;
-  private Integer copyId;
-  private String goodsId;
-  private String restIds;
-  private String imgUrl1;
-  private String wenanId;
-  private String wenanFl;
-
+    private String copyTitle;
+    private String copyLink;
+    private String copyContent;
+    private String customerId;
+    private Integer orderNo;
+    private Integer typeId;
+    private Integer copyId;
+    private String goodsId;
+    private String restIds;
+    private String imgUrl1;
+    private String wenanId;
+    private String wenanFl;
 
 
 }

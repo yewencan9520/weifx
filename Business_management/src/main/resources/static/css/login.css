@@ -1,5 +1,4 @@
-
-@import"https://cdn.bootcss.com/font-awesome/5.8.2/css/all.css";
+@import "https://cdn.bootcss.com/font-awesome/5.8.2/css/all.css";
 
 /*主体部分样式*/
 body {
@@ -17,7 +16,7 @@ body {
     position: absolute;
     top: 35%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     color: gray;
 }
 

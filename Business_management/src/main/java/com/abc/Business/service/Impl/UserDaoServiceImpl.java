@@ -15,12 +15,12 @@ public class UserDaoServiceImpl implements UserDaoService {
     private UserDao userDao;
 
     @Override
-    public WxbCustomer findUser(String username,String password)throws Exception {
+    public WxbCustomer findUser(String username, String password) throws Exception {
         String pwd = new Md5Hash(password).toHex();
-        WxbCustomer user = userDao.findUser(username,pwd);
-        if(user!=null){
+        WxbCustomer user = userDao.findUser(username, pwd);
+        if (user != null) {
             return user;
-        }else {
+        } else {
             throw new UserLoginException();
         }
     }

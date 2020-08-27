@@ -15,14 +15,14 @@ import java.util.LinkedHashMap;
 public class SpringConfiguration {
 
     @Bean
-    public DefaultWebSecurityManager provideSucrityManager(MyRealm myRealm){
+    public DefaultWebSecurityManager provideSucrityManager(MyRealm myRealm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(myRealm);
         return securityManager;
     }
 
     @Bean
-    public ShiroFilterFactoryBean provideShiroFilter(DefaultWebSecurityManager securityManager){
+    public ShiroFilterFactoryBean provideShiroFilter(DefaultWebSecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         shiroFilterFactoryBean.setLoginUrl("page/login");
@@ -33,7 +33,7 @@ public class SpringConfiguration {
 //        linkedHashMap.put("/**","authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(linkedHashMap);
-        return  shiroFilterFactoryBean;
+        return shiroFilterFactoryBean;
     }
 
 }

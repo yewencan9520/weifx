@@ -26,6 +26,7 @@ public class MyRealm extends AuthorizingRealm {
 
     /**
      * 授权：权限角色管理
+     *
      * @param principalCollection username
      * @return
      */
@@ -43,6 +44,7 @@ public class MyRealm extends AuthorizingRealm {
 
     /**
      * 认证：登录
+     *
      * @param authenticationToken 包含用户的用户名和密码
      * @return
      * @throws AuthenticationException
@@ -60,7 +62,7 @@ public class MyRealm extends AuthorizingRealm {
          * 参数2：密码
          * 参数3：realm的名称：唯一
          */
-        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(userInfo.getUsername(),userInfo.getPassword(),getName());
+        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(userInfo.getUsername(), userInfo.getPassword(), getName());
         //将simpleAuthenticationInfo交给SecurityManager进行登录逻辑判断
         return simpleAuthenticationInfo;
     }

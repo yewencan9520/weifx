@@ -68,7 +68,9 @@
     </style>
     <h2 class="page-title">
         <em th:text="${sk['goodsName']}" id="goodsName" name="goodsName" th:value="${sk['goodsName']}">444</em>
-        <a class="btn btn-yellow" th:onclick="lorder([[${sk.skuId}]],[[${sk.goodsName}]],[[${sk.goodsPic1}]],[[${sk.skuPrice}]]);" target="_blank">录单</a>
+        <a class="btn btn-yellow"
+           th:onclick="lorder([[${sk.skuId}]],[[${sk.goodsName}]],[[${sk.goodsPic1}]],[[${sk.skuPrice}]]);"
+           target="_blank">录单</a>
     </h2>
     <div class="good-info">
         <div class="row">
@@ -104,7 +106,8 @@
                         </div>
                     </a>
                 </div>
-                <div class="item" style="margin-left:20px;display:table;margin-bottom:0px;width:125px;height:71px;float:left;">
+                <div class="item"
+                     style="margin-left:20px;display:table;margin-bottom:0px;width:125px;height:71px;float:left;">
                     <a th:href="${sk['goodsPic3']}" title="" data-rel="fancybox-button" class="fancybox-button">
                         <div class="zoom">
                             <p style="text-align: center">640*200</p>
@@ -318,8 +321,8 @@
     });
 </script>
 <script>
-    function lorder(url,goodsName,goodsPic1,skuPrice) {
-        $("#content").load("toOrder?skuId="+url+"&goodsName="+goodsName+"&goodsPic1="+goodsPic1+"&skuPrice="+skuPrice)
+    function lorder(url, goodsName, goodsPic1, skuPrice) {
+        $("#content").load("toOrder?skuId=" + url + "&goodsName=" + goodsName + "&goodsPic1=" + goodsPic1 + "&skuPrice=" + skuPrice)
     }
 </script>
 <div id="topcontrol" title="返回顶部" style="position: fixed; bottom: 110px; right: 10px; opacity: 0; cursor: pointer;">

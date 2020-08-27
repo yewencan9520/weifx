@@ -44,8 +44,8 @@ public class MyRealm extends AuthorizingRealm {
         String username = usernamePasswordToken.getUsername();
         WxbMemeber user = userDao.findUser(username);
         //参数1：用户名/参数2：密码/参数3：realm的名称：唯一
-        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(user.getAccount(),user.getPassword(),"myRealm");
+        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(user.getAccount(), user.getPassword(), "myRealm");
         //将simpleAuthenticationInfo交给SecurityManager进行登录逻辑判断
-         return simpleAuthenticationInfo;
+        return simpleAuthenticationInfo;
     }
 }

@@ -20,9 +20,9 @@ public class RoleController {
     private RoleDaoService roleDaoService;
 
     @RequestMapping("roles")
-    public String findRolePage(Model model){
+    public String findRolePage(Model model) {
         List<SysRole> rolePage = roleDaoService.findRolePage();
-        model.addAttribute("roles",rolePage);
+        model.addAttribute("roles", rolePage);
         return "role";
     }
 
@@ -31,7 +31,7 @@ public class RoleController {
      */
     @RequestMapping("RoleTree")
     @ResponseBody
-    public List<TreeNodeBean> getRoleTree(String roleId){
+    public List<TreeNodeBean> getRoleTree(String roleId) {
         List<TreeNodeBean> roles = treeNodeDaoService.findAllRoleAndUsername(roleId);
         return roles;
     }

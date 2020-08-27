@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SysRole {
 
-  private String roleCode;
-  private String roleName;
-  private String roleDesc;
-  private String roleOrder;
-  private String roleType;
-  private String infoName;
+    private String roleCode;
+    private String roleName;
+    private String roleDesc;
+    private String roleOrder;
+    private String roleType;
+    private String infoName;
 
 }

@@ -2,8 +2,8 @@ var isIE = false;
 var isIE8 = false;
 var isIE9 = false;
 var isIE10 = false;
-var _hasAppendHead=false;
-var validRule=window.validRule || {};
+var _hasAppendHead = false;
+var validRule = window.validRule || {};
 validRule.isQQ = function (value) {
     var rule = /^[1-9]\d{4,12}$/;
     return rule.test(value);
@@ -48,8 +48,8 @@ var App = function () {
             jQuery('html').addClass('ie10');
         }
 
-        $('#copyButton').click(function(){
-            toastr.error('复制失败，请选中您要复制的文字然后右键复制。','抱歉');
+        $('#copyButton').click(function () {
+            toastr.error('复制失败，请选中您要复制的文字然后右键复制。', '抱歉');
         });
 
         $('.RS-title-for-closed,.right-service.closed .RS-img').click(function () {
@@ -69,7 +69,7 @@ var App = function () {
             jQuery('input[placeholder]:not(.placeholder-no-fix,:password), textarea[placeholder]:not(.placeholder-no-fix)').each(function () {
 
                 var input = jQuery(this);
-                if(input.attr('name')=='q'){
+                if (input.attr('name') == 'q') {
                     input.val('');
                     return;
                 }
@@ -171,43 +171,42 @@ var App = function () {
             }, "请填写正确的手机号码");
             jQuery.validator.addMethod("isQQ", function (value, element) {
                 var rule = /^\d{5,11}$/;
-                return this.optional(element) || ( rule.test(value));
+                return this.optional(element) || (rule.test(value));
             }, "请填写正确的QQ号码");
             jQuery.validator.addMethod("isWxId", function (value, element) {
                 var wxId = /[0-9a-zA-Z_-]{6,20}$/;
-                return this.optional(element) || ( wxId.test(value));
+                return this.optional(element) || (wxId.test(value));
             }, "请填写正确的微信号");
-            jQuery.validator.addMethod("moreThan", function (value, element,name) {
-                var elseVal=$('[name="'+name+'"]').val();
-                if(value<elseVal){
+            jQuery.validator.addMethod("moreThan", function (value, element, name) {
+                var elseVal = $('[name="' + name + '"]').val();
+                if (value < elseVal) {
                     return false;
                 }
                 return true;
             }, "请填写正确的值");
             jQuery.validator.addMethod("isOriginalId", function (value, element) {
-                if(value.lenth>30){
+                if (value.lenth > 30) {
                     return false;
                 }
                 var rule = /^[a-zA-Z]+_[0-9a-zA-Z]+$/;
-                return this.optional(element) || ( rule.test(value));
+                return this.optional(element) || (rule.test(value));
             }, "请填写正确的原始ID");
             jQuery.validator.addMethod("notZh", function (value, element) {
-                var isZh= (escape(value).indexOf("%u")<0);
+                var isZh = (escape(value).indexOf("%u") < 0);
                 return this.optional(element) || isZh;
             }, "不能包含中文或特殊字符");
         }
     }
 
 
-
     /*版权信息置底控制*/
     var copyrightFIxBottom = function () {
         if ($(".copyright").length > 0) {
-            var topHeight=$('.header.navbar').outerHeight();
-            if($('.header.navbar').length==0){
-                topHeight=$('.header.signup-header').outerHeight();
+            var topHeight = $('.header.navbar').outerHeight();
+            if ($('.header.navbar').length == 0) {
+                topHeight = $('.header.signup-header').outerHeight();
             }
-            var bottomHeight=$('.copyright').outerHeight();
+            var bottomHeight = $('.copyright').outerHeight();
             var minHeight = $(window).height() - topHeight - bottomHeight - 40;
             $(".page-container").css("min-height", minHeight + 'px');
         }
@@ -261,15 +260,15 @@ var App = function () {
         showLoading: function (target) {
             var oldHtml = target.html();
             target.addClass('js-loading disabled');
-            var fa= target.find('i.fa');
-            if(fa.length==0){
-                try{
+            var fa = target.find('i.fa');
+            if (fa.length == 0) {
+                try {
                     target.prepend('<i class="fa fa-spinner fa-loading"></i> ');
-                }catch (e){
+                } catch (e) {
 
                 }
-            }else{
-                fa.attr('class','fa fa-spinner fa-loading');
+            } else {
+                fa.attr('class', 'fa fa-spinner fa-loading');
             }
             return {
                 revert: function () {
@@ -279,9 +278,9 @@ var App = function () {
             };
         },
 
-        cutStr:function(str,len){
-            if(str.length>len){
-                str=str.substr(0,len-3)+'...';
+        cutStr: function (str, len) {
+            if (str.length > len) {
+                str = str.substr(0, len - 3) + '...';
             }
             return str;
         }
@@ -296,8 +295,8 @@ var App = function () {
  * @returns {boolean|*}
  * todo 微信图文 链接存在bug
  */
-function isURL(str_url){
-    var re=/^((https|http|ftp|rtsp|mms)?:\/\/)?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?(([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-z_!~*'()-]+\.)*([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\.[a-z]{2,6})(:[0-9]{1,4})?((\/?)|(\/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+\/?)$/;
+function isURL(str_url) {
+    var re = /^((https|http|ftp|rtsp|mms)?:\/\/)?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?(([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-z_!~*'()-]+\.)*([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\.[a-z]{2,6})(:[0-9]{1,4})?((\/?)|(\/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+\/?)$/;
     return re.test(str_url);
 }
 
@@ -309,66 +308,67 @@ function isURL(str_url){
 function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
     var r = window.location.search.substr(1).match(reg);
-    if (r != null) return decodeURIComponent(r[2]); return null;
+    if (r != null) return decodeURIComponent(r[2]);
+    return null;
 }
 
-function processAjaxData(answer, url){
+function processAjaxData(answer, url) {
     document.title = answer.pageTitle;
-    window.history.pushState({"html":answer.html,"pageTitle":answer.pageTitle},"", url);
+    window.history.pushState({"html": answer.html, "pageTitle": answer.pageTitle}, "", url);
 }
 
 //验证手机号码
-function goCheckAndGo(url){
-    if(typeof CHECK_MOBILE_URL =="undefined"){
-        var CHECK_MOBILE_URL='';
-        try{
+function goCheckAndGo(url) {
+    if (typeof CHECK_MOBILE_URL == "undefined") {
+        var CHECK_MOBILE_URL = '';
+        try {
             console.log('goCheckAndGo 调用错误，未设置 CHECK_MOBILE_URL 全局变量');
-        }catch (e){
+        } catch (e) {
 
         }
         return;
     }
-    $.get(CHECK_MOBILE_URL,function(data){
-        if( data.error == 0 ){
-            if( data.res == 0 ){
-                User.bindMobile(function(){
-                    window.location.href=url;
+    $.get(CHECK_MOBILE_URL, function (data) {
+        if (data.error == 0) {
+            if (data.res == 0) {
+                User.bindMobile(function () {
+                    window.location.href = url;
                 });
-            }else{
-                window.location.href=url;
+            } else {
+                window.location.href = url;
             }
         }
-    },'json');
+    }, 'json');
 }
 
-function handlerScroll(){
+function handlerScroll() {
     var scTop = $(window).scrollTop();
-    var _head=$('.table-cps:not(.header-no-fix)');
-    var body_tr=_head.find('tbody>tr');
-    if(_head.length>0){
-        if(body_tr.length<3){
+    var _head = $('.table-cps:not(.header-no-fix)');
+    var body_tr = _head.find('tbody>tr');
+    if (_head.length > 0) {
+        if (body_tr.length < 3) {
             return;
         }
-        var _head_startTop=_head.position().top+110;
-        var thead_html=_head.find('thead').prop('outerHTML');
-        var hasSort=$('.has-sort').length;
-        hasSort=hasSort>0?' has-sort':'';
-        var html=$('<table class="table table-cps table-hover table-advance table-head-fixed'+hasSort+'">'+thead_html+'</table>');
-        html.find('.tooltips').attr('data-placement','bottom');
+        var _head_startTop = _head.position().top + 110;
+        var thead_html = _head.find('thead').prop('outerHTML');
+        var hasSort = $('.has-sort').length;
+        hasSort = hasSort > 0 ? ' has-sort' : '';
+        var html = $('<table class="table table-cps table-hover table-advance table-head-fixed' + hasSort + '">' + thead_html + '</table>');
+        html.find('.tooltips').attr('data-placement', 'bottom');
         if (scTop > _head_startTop) {
-            if(!_hasAppendHead){
-                _hasAppendHead=true;
+            if (!_hasAppendHead) {
+                _hasAppendHead = true;
                 $('body').append(html);
                 $('.tooltips').tooltip();
             }
         } else {
-            if(_hasAppendHead){
-                _hasAppendHead=false;
+            if (_hasAppendHead) {
+                _hasAppendHead = false;
                 $('.table-head-fixed').remove();
             }
         }
-        if(typeof PAGE_TYPE !="undefined" && PAGE_TYPE=='admin'){
-            var page_width=$(window).width();
+        if (typeof PAGE_TYPE != "undefined" && PAGE_TYPE == 'admin') {
+            var page_width = $(window).width();
             html.width(_head.width());
         }
     }

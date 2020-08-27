@@ -90,24 +90,31 @@
                                     <th class="left">排序</th>
                                 </tr>
                                 <tr th:each="pages,item:${page}">
-                                    <td><input type="checkbox" name="dg1_RowCheck2" id="dg1_RowCheck1" th:value="${pages['goodsId']}"></td>
+                                    <td><input type="checkbox" name="dg1_RowCheck2" id="dg1_RowCheck1"
+                                               th:value="${pages['goodsId']}"></td>
                                     <!--序号-->
                                     <td align="center" th:text="${item.count}">序号</td>
                                     <!--商品名称-->
-                                    <td align="center"><a href="" onclick="" th:text="${pages['goodsName']}">商品名称</a></td>
+                                    <td align="center"><a href="" onclick="" th:text="${pages['goodsName']}">商品名称</a>
+                                    </td>
                                     <!--商品图片-->
-                                    <td align="center" height="100px"><img th:src="${pages['goodsPic1']}" style="width:150px;height:100px;"></td>
+                                    <td align="center" height="100px"><img th:src="${pages['goodsPic1']}"
+                                                                           style="width:150px;height:100px;"></td>
                                     <!--商户名称-->
                                     <td align="center" th:text="${pages['customerId']}">商户名称</td>
                                     <!--是否置顶-->
                                     <td align="center">
-                                        <span class="label label-sm label-primary" th:if="${pages['toped']}=='1'">置顶</span>
-                                        <span class="label label-sm label-primary" th:if="${pages['toped']}=='0'">未置顶</span>
+                                        <span class="label label-sm label-primary"
+                                              th:if="${pages['toped']}=='1'">置顶</span>
+                                        <span class="label label-sm label-primary"
+                                              th:if="${pages['toped']}=='0'">未置顶</span>
                                     </td>
                                     <!--是否推荐-->
                                     <td align="center">
-                                        <span class="label label-sm label-success" th:if="${pages['recomed']}=='1'">已推荐</span>
-                                        <span class="label label-sm label-success" th:if="${pages['recomed']}=='0'">未推荐</span>
+                                        <span class="label label-sm label-success"
+                                              th:if="${pages['recomed']}=='1'">已推荐</span>
+                                        <span class="label label-sm label-success"
+                                              th:if="${pages['recomed']}=='0'">未推荐</span>
                                     </td>
                                     <!--商品价格-->
                                     <td align="center"></td>
@@ -219,24 +226,32 @@
     function audit(url) {
         var goodsId;
         $("input[name='dg1_RowCheck2']").each(function () {
-            if($(this).is(":checked")){
-                goodsId=$(this).val();
+            if ($(this).is(":checked")) {
+                goodsId = $(this).val();
                 return;
             }
         });
-        $.ajax({
-            url:url+"?goodsId="+goodsId,
-            method:"get",
-            success:function (data) {
-                alert(data.obj),
-                $("#content").load("gInfo");
-            }
-        });
+        if(goodsId===undefined){
+            alert("请选择一项需要操作的");
+            return
+        }else {
+            $.ajax({
+                url: url + "?goodsId=" + goodsId,
+                method: "get",
+                success: function (data) {
+                    alert(data.obj),
+                        $("#content").load("gInfo");
+                }
+            });
+        }
+
 
     }
+
     function page1() {
         $("#content").load("gInfo?currentPage=0");
     }
+
     function page2() {
         $("#content").load("gInfo?currentPage=1");
     }

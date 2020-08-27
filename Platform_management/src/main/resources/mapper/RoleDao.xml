@@ -15,13 +15,13 @@
 
     <select id="findRolePage" resultMap="rm">
         SELECT
-            f.user_id as roleDesc,f.username as infoName,r.role_code,r.role_name,r.role_order,f.remark as roleType
+        f.user_id as roleDesc,f.username as infoName,r.role_code,r.role_name,r.role_order,f.remark as roleType
         FROM
-            user_info f
+        user_info f
         JOIN
-            sys_role r
-            ON
-            r.role_code=f.role_id
+        sys_role r
+        ON
+        r.role_code=f.role_id
     </select>
 
 </mapper>

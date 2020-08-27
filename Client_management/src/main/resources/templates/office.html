@@ -119,15 +119,15 @@
 
                        <span class="tag-type1 tag-type1-5 " data-id="5">男女通用</span>
             </div>-->
-<!--            <div class="pull-right search_div">-->
-<!--                <div class="input-group">-->
-<!--                    <input type="text" name="alisaname" value="" id="alisaname" class="form-control">-->
-<!--                    <span class="input-group-btn">-->
-<!--                                        <button class="btn red search_btn" type="submit">-->
-<!--                                            <i class="fa fa-search"></i></button>-->
-<!--                                    </span>-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div class="pull-right search_div">-->
+            <!--                <div class="input-group">-->
+            <!--                    <input type="text" name="alisaname" value="" id="alisaname" class="form-control">-->
+            <!--                    <span class="input-group-btn">-->
+            <!--                                        <button class="btn red search_btn" type="submit">-->
+            <!--                                            <i class="fa fa-search"></i></button>-->
+            <!--                                    </span>-->
+            <!--                </div>-->
+            <!--            </div>-->
         </form>
     </div>
     <div class="margin-top-10">
@@ -140,13 +140,14 @@
                 <th class="text-center" width="140">推广详情</th>
             </tr>
             </thead>
-            <tbody th:each="sku,item:${allSku}" >
+            <tbody th:each="sku,item:${allSku}">
             <tr>
                 <td style="vertical-align:top;">
                     <img class="cover" th:src="${sku['goodsPic1']}" alt="">
                 </td>
                 <td style="vertical-align: top;">
-                    <a class="goods-link" th:onclick ="officeInfo([[${sku.skuId}]]);" th:text="${sku['goodsName']}">套餐名</a>
+                    <a class="goods-link" th:onclick="officeInfo([[${sku.skuId}]]);"
+                       th:text="${sku['goodsName']}">套餐名</a>
                     <div class="goods-tags-wrap">
                         <span th:if="${sku['tags']}==0" class="label label-danger">热销爆款</span>
                         <span th:if="${sku['tags']}==1" class="label label-pink">女粉推荐</span>
@@ -216,7 +217,7 @@
 
     function officeInfo(skuId) {
         console.log(skuId)
-        $("#content").load("toOfficeInfo?skuId="+skuId)
+        $("#content").load("toOfficeInfo?skuId=" + skuId)
     }
 </script>
 <div id="topcontrol" title="返回顶部" style="position: fixed; bottom: 110px; right: 10px; opacity: 0; cursor: pointer;">

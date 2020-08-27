@@ -12,14 +12,14 @@
  */
 function renderChart1(chartInfo, data) {
     var default_option = {
-        "tooltip": { "trigger": "axis" },
-        "legend": { "data": ["统计标题"] },
+        "tooltip": {"trigger": "axis"},
+        "legend": {"data": ["统计标题"]},
         "xAxis": [
-            { "type": "category", "data": [] }
+            {"type": "category", "data": []}
         ],
         "yAxis": [
-            { name: '浏览及IP数', "type": "value" },
-            { name: '订单数', "type": "value" }
+            {name: '浏览及IP数', "type": "value"},
+            {name: '订单数', "type": "value"}
         ],
         "series": [
             {
@@ -41,7 +41,7 @@ function renderChart1(chartInfo, data) {
         _option[obj.id].series = [];
         for (var j = 0; j < obj.title.length; j++) {
             var _title = obj.title[j];
-            var _temp = { "name": _title, "type": "line", "data": [] };
+            var _temp = {"name": _title, "type": "line", "data": []};
             if (_title == '当日订单') {
                 _temp.yAxisIndex = 1;
             }
@@ -69,49 +69,49 @@ function renderChart1(chartInfo, data) {
     return _charts;
 }
 
-function renderChart2(chartInfo, data){
+function renderChart2(chartInfo, data) {
     var default_option = {
-        title : {
+        title: {
             text: '订单统计',
-            x:'center'
+            x: 'center'
         },
-        tooltip : {
+        tooltip: {
             trigger: 'item',
             formatter: "暂无订单"
         },
         legend: {
-            orient : 'vertical',
-            x : 'left',
-            y : 'center',
-            data:['暂无订单']
+            orient: 'vertical',
+            x: 'left',
+            y: 'center',
+            data: ['暂无订单']
         },
-        series : [
+        series: [
             {
-                name:'订单数',
-                type:'pie',
-                radius : ['50%', '70%'],
-                itemStyle : {
-                    normal : {
-                        label : {
-                            show : false
+                name: '订单数',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: false
                         },
-                        labelLine : {
-                            show : false
+                        labelLine: {
+                            show: false
                         }
                     },
-                    emphasis : {
-                        label : {
-                            show : true,
-                            position : 'center',
-                            textStyle : {
-                                fontSize : '18',
-                                fontWeight : 'bold'
+                    emphasis: {
+                        label: {
+                            show: true,
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '18',
+                                fontWeight: 'bold'
                             }
                         }
                     }
                 },
-                data:[
-                    {value:'1', name:'暂无订单'}
+                data: [
+                    {value: '1', name: '暂无订单'}
                 ]
             }
         ]
@@ -122,21 +122,21 @@ function renderChart2(chartInfo, data){
     _option = $.extend(true, {}, default_option);
 
 
-    var data_temp=[];
-    var nums=0;
+    var data_temp = [];
+    var nums = 0;
     for (var i = 0; i < data.length; i++) {
-        var _num=parseInt(data[i],10);
-        nums+=_num;
+        var _num = parseInt(data[i], 10);
+        nums += _num;
         data_temp.push({
-            value:_num,
-            name:chartInfo.title[i]
+            value: _num,
+            name: chartInfo.title[i]
         });
     }
 
-    if(nums>0){
-        _option.legend.data=chartInfo.title;
-        _option.tooltip.formatter= "{a} <br/>{b} : {c} ({d}%)";
-        _option.series[0].data=data_temp;
+    if (nums > 0) {
+        _option.legend.data = chartInfo.title;
+        _option.tooltip.formatter = "{a} <br/>{b} : {c} ({d}%)";
+        _option.series[0].data = data_temp;
     }
 
     _chart.setOption(_option);

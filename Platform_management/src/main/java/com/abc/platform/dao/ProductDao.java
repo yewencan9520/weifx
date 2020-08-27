@@ -15,11 +15,11 @@ public interface ProductDao {
 
     List<WxbGoods> findAllGoods();
 
-    int updateSkuTopById(@Param("top") int top,@Param("goodsId") String goodsId);
+    int updateSkuTopById(@Param("top") int top, @Param("goodsId") String goodsId);
 
-    int updateSkurecomedById(@Param("recomed") int recomed,@Param("goodsId") String goodsId);
+    int updateSkurecomedById(@Param("recomed") int recomed, @Param("goodsId") String goodsId);
 
-    int updateSkustatesById(@Param("state") int state,@Param("goodsId") String goodsId);
+    int updateSkustatesById(@Param("state") int state, @Param("goodsId") String goodsId);
 
     List<WxbCustomer> findAllCustomer();
 

@@ -3,7 +3,7 @@
 <head>
     <base th:href="${#request.getContextPath()}+'/'">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+
     <title>自媒体盈利平台</title>
     <meta name="keywords" content="CPS联盟，微信派单接单，微信盈利联盟，微信盈利，微信盈利平台，盈利联盟，微信广告联盟，微联盟">
     <meta property="qc:admins" content="4441727777670263757">
@@ -43,7 +43,7 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand">
-            <img src="img/logo.png" id="logoimg" alt="logo">
+                <img src="img/logo.png" id="logoimg" alt="logo">
             </a>
         </div>
         <div class="pull-right index-header-lsist" style="aligin:right;margin-top:35px;">
@@ -60,25 +60,28 @@
                 <form id="form" method="post" action="Clogin">
                     <div class="login-title text-center">
                         <div>
-                            <input type="radio" name="user_ck" onclick="clickRadio(0);" checked="" id="memeber" value="0">自媒体登录
+                            <input type="radio" name="user_ck" onclick="clickRadio(0);" checked="" id="memeber"
+                                   value="0">自媒体登录
                             <input type="radio" name="user_ck" onclick="clickRadio(1);" id="customer" value="1">商户登录
                         </div>
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="ismobile" id="ismobile" class="form-control" value="1">
                         <input type="hidden" name="user_type" id="user_type" class="form-control" value="0">
-                        <input type="text" name="username" id="username" class="form-control" placeholder="登录账号" value="">
+                        <input type="text" name="username" id="username" class="form-control" placeholder="登录账号"
+                               value="">
                         <span class="login-icon login-icon-user"></span>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" id="password" class="form-control" placeholder="账号密码" value="">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="账号密码"
+                               value="">
                         <span class="login-icon login-icon-pwd"></span>
                     </div>
-<!--                    <div id="captcha" class="form-group captcha-warpper" style="margin-bottom: 5px;display: none;">-->
-<!--                        <input class="form-control captcha" id="captcha1" type="text" name="captcha" placeholder="验证码">-->
-<!--                        <img class="check-code js-refresh-check" src="img/captcha" alt="验证码">-->
-<!--                        <a class="js-refresh-check" href="javascript:void(0);">换一张</a>-->
-<!--                    </div>-->
+                    <!--                    <div id="captcha" class="form-group captcha-warpper" style="margin-bottom: 5px;display: none;">-->
+                    <!--                        <input class="form-control captcha" id="captcha1" type="text" name="captcha" placeholder="验证码">-->
+                    <!--                        <img class="check-code js-refresh-check" src="img/captcha" alt="验证码">-->
+                    <!--                        <a class="js-refresh-check" href="javascript:void(0);">换一张</a>-->
+                    <!--                    </div>-->
                     <div class="form-group" style="margin-bottom: 10px;">
                         <label>
                             <input type="checkbox" checked="" name="remember" style="margin-left:0;margin-right:4px;">记住账号</label>
@@ -405,7 +408,7 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_307679'%3E%3C/span%3E%3Cscri
                 data: data,
                 dataType: 'json',
                 success: function (response) {
-                    if (response.code==0) {
+                    if (response.code == 0) {
                         $.cookie('loginErrorTimes', 0);
                         toastr.success('登录成功');
                         if ($("#user_type").val() == 0) {

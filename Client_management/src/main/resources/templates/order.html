@@ -29,7 +29,7 @@
             width: 100%;
         }
     </style>
-<!--    <script type="text/javascript" src="css/api"></script>-->
+    <!--    <script type="text/javascript" src="css/api"></script>-->
     <script type="text/javascript" src="css/getscript"></script>
     <title>订单信息</title>
     <link rel="stylesheet" type="text/css" href="css/buy.css">
@@ -40,7 +40,7 @@
 <body>
 <div>
 
-    <form th:each="sku,item:${wxbGood}" id="form_buy" name="form_buy" class="buy-form" method="post" >
+    <form th:each="sku,item:${wxbGood}" id="form_buy" name="form_buy" class="buy-form" method="post">
         <input type="hidden" id="token" name="token" value="">
         <input type="hidden" name="attr_id" id="attr_id" value="">
         <input type="hidden" name="miaoshu" id="miaoshu" value="">
@@ -62,10 +62,11 @@
                     <label>价　格 </label>
                     <span class="i_pri" id="skuPriceSpan" th:text="${sku['skuPrice']}">130</span>
                 </p>
-<!--                <input required="required" id="item_num" name="number" maxlength="3" class="block input" type="hidden" value="1">-->
+                <!--                <input required="required" id="item_num" name="number" maxlength="3" class="block input" type="hidden" value="1">-->
                 <p class="row">
                     <label>数　量 </label>
-                    <input required="required" id="number" name="number" maxlength="3" class="block input" style="width:40px;text-align:center" type="tel" value="">
+                    <input required="required" id="number" name="number" maxlength="3" class="block input"
+                           style="width:40px;text-align:center" type="tel" value="">
                 </p>
                 <p>
                     <input type="radio" id="pay_type1" name="pay_type" onclick="changePrice()" value="1"
@@ -167,20 +168,34 @@
                         <div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 1;">
                             <div style="position: absolute; overflow: visible; z-index: -100; left: 504px; top: 150px; display: block; transform: translate3d(0px, 0px, 0px);">
                                 <img src="css/saved_resource"
-                                     style="position: absolute; border: none; width: 256px; height: 256px; left: -759px; top: 132px; max-width: none; opacity: 1;"><img src="css/saved_resource(1)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 265px; top: 132px; max-width: none; opacity: 1;"><img src="css/saved_resource(2)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 265px; top: -380px; max-width: none; opacity: 1;"><img src="css/saved_resource(3)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -247px; top: -124px; max-width: none; opacity: 1;"><img src="css/saved_resource(4)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -503px; top: -124px; max-width: none; opacity: 1;"><img src="css/saved_resource(5)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 9px; top: -124px; max-width: none; opacity: 1;"><img src="css/saved_resource(6)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -247px; top: 132px; max-width: none; opacity: 1;"><img src="css/saved_resource(7)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -247px; top: -380px; max-width: none; opacity: 1;"><img src="css/saved_resource(8)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -759px; top: -124px; max-width: none; opacity: 1;"><img src="css/saved_resource(9)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 265px; top: -124px; max-width: none; opacity: 1;"><img src="css/saved_resource(10)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -503px; top: 132px; max-width: none; opacity: 1;"><img src="css/saved_resource(11)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -503px; top: -380px; max-width: none; opacity: 1;"><img src="css/saved_resource(12)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 9px; top: 132px; max-width: none; opacity: 1;"><img src="css/saved_resource(13)"
-                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 9px; top: -380px; max-width: none; opacity: 1;"><img src="css/saved_resource(14)"
+                                     style="position: absolute; border: none; width: 256px; height: 256px; left: -759px; top: 132px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(1)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 265px; top: 132px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(2)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 265px; top: -380px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(3)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -247px; top: -124px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(4)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -503px; top: -124px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(5)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 9px; top: -124px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(6)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -247px; top: 132px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(7)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -247px; top: -380px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(8)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -759px; top: -124px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(9)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 265px; top: -124px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(10)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -503px; top: 132px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(11)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: -503px; top: -380px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(12)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 9px; top: 132px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(13)"
+                                    style="position: absolute; border: none; width: 256px; height: 256px; left: 9px; top: -380px; max-width: none; opacity: 1;"><img
+                                    src="css/saved_resource(14)"
                                     style="position: absolute; border: none; width: 256px; height: 256px; left: -759px; top: -380px; max-width: none; opacity: 1;">
                             </div>
                         </div>
@@ -203,7 +218,8 @@
                     <div class=" anchorBL"
                          style="height: 32px; position: absolute; z-index: 30; text-size-adjust: none; bottom: 20px; right: auto; top: auto; left: 1px;">
                         <a title="到百度地图查看此区域" target="_blank" href="http://map.baidu.com/?sr=1"
-                           style="outline: none;"><img style="border:none;width:77px;height:32px" src="css/copyright_logo.png"></a></div>
+                           style="outline: none;"><img style="border:none;width:77px;height:32px"
+                                                       src="css/copyright_logo.png"></a></div>
                     <div unselectable="on" class=" BMap_cpyCtrl BMap_noprint anchorBL"
                          style="cursor: default; white-space: nowrap; color: black; background: none; font: 11px/15px arial, sans-serif; bottom: 2px; right: auto; top: auto; left: 2px; position: absolute; z-index: 10; text-size-adjust: none;">
                         <span _cid="1" style="display: inline;">
@@ -224,22 +240,24 @@
                     <input id="other" name="buyerReamrk" class="block input" type="text" value=""
                            placeholder="可以告诉卖家您对商品的特殊要求，如：颜色、数量等">
                 </p>
-<!--                <p id="mbcaptchaWrap" class="row row_area" style="display:none;">-->
-<!--                    <label for="other">手机验证码</label>-->
-<!--                    <input id="mbcaptcha" name="mbcaptcha" class="block input mbcaptcha" type="text" value="">-->
-<!--                    <input id="ckbtn" name="ckbtn" type="button" onclick="getMobileCode();" title="点击获取手机验证码"-->
-<!--                           style="border:0px solid #fff;width:100px;height:30px;background:#f60;cursor:pointer;color:#fff"-->
-<!--                           value="获取验证码">-->
-<!--                </p>-->
-<!--                <p id="captchaWrap" style="display: none;" class="row row_area">-->
-<!--                    <label for="other">验证码</label>-->
-<!--                    <input id="captcha" name="captcha" class="block input captcha" type="text" value="">-->
-<!--                    <img class="check-code js-refresh-check" src="css/captcha" alt="验证码">-->
-<!--                </p>-->
+                <!--                <p id="mbcaptchaWrap" class="row row_area" style="display:none;">-->
+                <!--                    <label for="other">手机验证码</label>-->
+                <!--                    <input id="mbcaptcha" name="mbcaptcha" class="block input mbcaptcha" type="text" value="">-->
+                <!--                    <input id="ckbtn" name="ckbtn" type="button" onclick="getMobileCode();" title="点击获取手机验证码"-->
+                <!--                           style="border:0px solid #fff;width:100px;height:30px;background:#f60;cursor:pointer;color:#fff"-->
+                <!--                           value="获取验证码">-->
+                <!--                </p>-->
+                <!--                <p id="captchaWrap" style="display: none;" class="row row_area">-->
+                <!--                    <label for="other">验证码</label>-->
+                <!--                    <input id="captcha" name="captcha" class="block input captcha" type="text" value="">-->
+                <!--                    <img class="check-code js-refresh-check" src="css/captcha" alt="验证码">-->
+                <!--                </p>-->
             </div>
         </section>
-        <footer >
-            <button type="button" class="c_txt orange_bg" id="buy_now" onclick="submitOrder()" style="height:40px;">提交订单</button>
+        <footer>
+            <button type="button" class="c_txt orange_bg" id="buy_now" onclick="submitOrder()" style="height:40px;">
+                提交订单
+            </button>
             <br>
         </footer>
 
@@ -288,10 +306,10 @@
             contentType: "application/json",
             success: function (date) {
                 console.log(date);
-                if(date.code==0){
+                if (date.code == 0) {
                     alert(date.obj);
                     $("#content").load("page/pay");
-                }else{
+                } else {
                     alert(date.obj);
                 }
             }

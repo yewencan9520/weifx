@@ -3,135 +3,135 @@ package com.abc.Business.bean;
 
 public class WxbCustomer {
 
-  private String customerId;
-  private String customerName;
-  private String qq;
-  private String wxh;
-  private String phone;
-  private java.sql.Timestamp createtime;
-  private String loginName;
-  private String loginPwd;
-  private Integer state;
-  private Integer level;
-  private double accBalance;
-  private java.sql.Timestamp updateTime;
-  private String website;
+    private String customerId;
+    private String customerName;
+    private String qq;
+    private String wxh;
+    private String phone;
+    private java.sql.Timestamp createtime;
+    private String loginName;
+    private String loginPwd;
+    private Integer state;
+    private Integer level;
+    private double accBalance;
+    private java.sql.Timestamp updateTime;
+    private String website;
 
 
-  public String getCustomerId() {
-    return customerId;
-  }
+    public String getCustomerId() {
+        return customerId;
+    }
 
-  public void setCustomerId(String customerId) {
-    this.customerId = customerId;
-  }
-
-
-  public String getCustomerName() {
-    return customerName;
-  }
-
-  public void setCustomerName(String customerName) {
-    this.customerName = customerName;
-  }
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
 
 
-  public String getQq() {
-    return qq;
-  }
+    public String getCustomerName() {
+        return customerName;
+    }
 
-  public void setQq(String qq) {
-    this.qq = qq;
-  }
-
-
-  public String getWxh() {
-    return wxh;
-  }
-
-  public void setWxh(String wxh) {
-    this.wxh = wxh;
-  }
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
 
 
-  public String getPhone() {
-    return phone;
-  }
+    public String getQq() {
+        return qq;
+    }
 
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
-
-  public java.sql.Timestamp getCreatetime() {
-    return createtime;
-  }
-
-  public void setCreatetime(java.sql.Timestamp createtime) {
-    this.createtime = createtime;
-  }
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
 
 
-  public String getLoginName() {
-    return loginName;
-  }
+    public String getWxh() {
+        return wxh;
+    }
 
-  public void setLoginName(String loginName) {
-    this.loginName = loginName;
-  }
-
-
-  public String getLoginPwd() {
-    return loginPwd;
-  }
-
-  public void setLoginPwd(String loginPwd) {
-    this.loginPwd = loginPwd;
-  }
+    public void setWxh(String wxh) {
+        this.wxh = wxh;
+    }
 
 
-  public long getState() {
-    return state;
-  }
+    public String getPhone() {
+        return phone;
+    }
 
-  public void setState(Integer state) {
-    this.state = state;
-  }
-
-
-  public long getLevel() {
-    return level;
-  }
-
-  public void setLevel(Integer level) {
-    this.level = level;
-  }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
 
-  public double getAccBalance() {
-    return accBalance;
-  }
+    public java.sql.Timestamp getCreatetime() {
+        return createtime;
+    }
 
-  public void setAccBalance(double accBalance) {
-    this.accBalance = accBalance;
-  }
-
-
-  public java.sql.Timestamp getUpdateTime() {
-    return updateTime;
-  }
-
-  public void setUpdateTime(java.sql.Timestamp updateTime) {
-    this.updateTime = updateTime;
-  }
+    public void setCreatetime(java.sql.Timestamp createtime) {
+        this.createtime = createtime;
+    }
 
 
-  public String getWebsite() {
-    return website;
-  }
+    public String getLoginName() {
+        return loginName;
+    }
 
-  public void setWebsite(String website) {
-    this.website = website;
-  }
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+
+    public String getLoginPwd() {
+        return loginPwd;
+    }
+
+    public void setLoginPwd(String loginPwd) {
+        this.loginPwd = loginPwd;
+    }
+
+
+    public long getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+
+    public long getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+
+    public double getAccBalance() {
+        return accBalance;
+    }
+
+    public void setAccBalance(double accBalance) {
+        this.accBalance = accBalance;
+    }
+
+
+    public java.sql.Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(java.sql.Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
+
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
 
 }

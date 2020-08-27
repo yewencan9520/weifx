@@ -17,42 +17,46 @@ import java.util.List;
 public class IndexController {
     @Autowired
     private IndexDaoService indexDaoService;
-//    @RequestMapping("toIndex")
+
+    //    @RequestMapping("toIndex")
 //    public String toIndex(){
 //        return "index";
 //    }
     @RequestMapping("toOffice")
-    public String findAllSku(Model model){
+    public String findAllSku(Model model) {
         List<WxbGood> allSku = indexDaoService.findAllSku();
-        model.addAttribute("allSku",allSku);
+        model.addAttribute("allSku", allSku);
         return "office";
     }
+
     @RequestMapping("toOfficeInfo")
-    public String officeInfo(String skuId,Model model){
+    public String officeInfo(String skuId, Model model) {
         WxbGood sku = indexDaoService.findSkuById(skuId);
-        model.addAttribute("sku",sku);
+        model.addAttribute("sku", sku);
         return "officeInfo";
     }
+
     @RequestMapping("toOrder")
-    public String order(String skuId,String goodsName,String goodsPic1,String skuPrice,Model model){
+    public String order(String skuId, String goodsName, String goodsPic1, String skuPrice, Model model) {
         WxbGood wxbGood = new WxbGood();
         wxbGood.setSkuId(skuId);
         wxbGood.setGoodsName(goodsName);
         wxbGood.setGoodsPic1(goodsPic1);
         wxbGood.setSkuPrice(skuPrice);
-        model.addAttribute("wxbGood",wxbGood);
+        model.addAttribute("wxbGood", wxbGood);
         return "order";
     }
+
     @RequestMapping("saveOrder")
     @ResponseBody
-    public JsonResult saveOrder(@RequestBody WxbOrder wxbOrder){
+    public JsonResult saveOrder(@RequestBody WxbOrder wxbOrder) {
         JsonResult jsonResult = new JsonResult();
         try {
             indexDaoService.insertOrder(wxbOrder);
             jsonResult.setCode(0);
             jsonResult.setObj("订单提交成功");
             return jsonResult;
-        }catch (Exception e){
+        } catch (Exception e) {
             jsonResult.setCode(1);
             jsonResult.setObj("订单提交失败，请稍后再试");
             return jsonResult;

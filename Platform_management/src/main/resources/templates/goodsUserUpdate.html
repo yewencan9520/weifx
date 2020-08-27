@@ -83,20 +83,22 @@
         var level = $("#level").val();
         var state = $("input[name='state']:checked").val();
 
-        var customer = {"customerId":customerId,"customerName":customerName,"qq":qq,"wxh":wxh,
-                "phone":phone,"loginName":loginName,"loginPwd":loginPwd,
-                "level":level,"state":state};
+        var customer = {
+            "customerId": customerId, "customerName": customerName, "qq": qq, "wxh": wxh,
+            "phone": phone, "loginName": loginName, "loginPwd": loginPwd,
+            "level": level, "state": state
+        };
         $.ajax({
-            url:"gUserSaveUpdate",
-            method:"post",
-            data:JSON.stringify(customer),
-            dataType:"json",
-            contentType:"application/json",
-            success:function(data){
-                if(data.code==0){
+            url: "gUserSaveUpdate",
+            method: "post",
+            data: JSON.stringify(customer),
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                if (data.code == 0) {
                     alert(data.obj)
                     $("#content").load("gUser");
-                }else{
+                } else {
                     alert(data.obj)
                 }
             }

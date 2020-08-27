@@ -41,10 +41,10 @@
                 var resizeTimeout,
                     that = this;
 
-                $(window).on('resize.modal', function(){
+                $(window).on('resize.modal', function () {
                     resizeTimeout && clearTimeout(resizeTimeout);
-                    resizeTimeout = setTimeout(function(){
-                        for (var i = 0; i < that.stack.length; i++){
+                    resizeTimeout = setTimeout(function () {
+                        for (var i = 0; i < that.stack.length; i++) {
                             that.stack[i].isShown && that.stack[i].layout();
                         }
                     }, 10);
@@ -53,7 +53,7 @@
         },
 
         createModal: function (element, options) {
-            $(element).modal($.extend({ manager: this }, options));
+            $(element).modal($.extend({manager: this}, options));
         },
 
         appendModal: function (modal) {
@@ -63,7 +63,7 @@
 
             modal.$element.on('show.modalmanager', targetIsSelf(function (e) {
 
-                var showModal = function(){
+                var showModal = function () {
                     modal.isShown = true;
 
                     var transition = $.support.transition && modal.$element.hasClass('fade');
@@ -112,14 +112,18 @@
             modal.$element.on('hidden.modalmanager', targetIsSelf(function (e) {
 
                 that.backdrop(modal);
-                if (modal.$backdrop){
+                if (modal.$backdrop) {
                     var transition = $.support.transition && modal.$element.hasClass('fade');
 
                     // trigger a relayout due to firebox's buggy transition end event
-                    if (transition) { modal.$element[0].offsetWidth; }
+                    if (transition) {
+                        modal.$element[0].offsetWidth;
+                    }
 
                     $.support.transition && modal.$element.hasClass('fade') ?
-                        modal.$backdrop.one($.support.transition.end, function () { that.destroyModal(modal) }) :
+                        modal.$backdrop.one($.support.transition.end, function () {
+                            that.destroyModal(modal)
+                        }) :
                         that.destroyModal(modal);
                 } else {
                     that.destroyModal(modal);
@@ -140,7 +144,7 @@
 
             this.$element.toggleClass('modal-open', hasOpenModal);
 
-            if (!hasOpenModal){
+            if (!hasOpenModal) {
                 this.$element.removeClass('page-overflow');
             }
 
@@ -151,7 +155,7 @@
 
         getOpenModals: function () {
             var openModals = [];
-            for (var i = 0; i < this.stack.length; i++){
+            for (var i = 0; i < this.stack.length; i++) {
                 if (this.stack[i].isShown) openModals.push(this.stack[i]);
             }
 
@@ -165,7 +169,7 @@
         setFocus: function () {
             var topModal;
 
-            for (var i = 0; i < this.stack.length; i++){
+            for (var i = 0; i < this.stack.length; i++) {
                 if (this.stack[i].isShown) topModal = this.stack[i];
             }
 
@@ -186,7 +190,7 @@
         },
 
         getIndexOfModal: function (modal) {
-            for (var i = 0; i < this.stack.length; i++){
+            for (var i = 0; i < this.stack.length; i++) {
                 if (modal === this.stack[i]) return i;
             }
         },
@@ -194,7 +198,7 @@
         replace: function (callback) {
             var topModal;
 
-            for (var i = 0; i < this.stack.length; i++){
+            for (var i = 0; i < this.stack.length; i++) {
                 if (this.stack[i].isShown) topModal = this.stack[i];
             }
 
@@ -203,7 +207,7 @@
                 topModal.$backdrop = null;
 
                 callback && topModal.$element.one('hidden',
-                    targetIsSelf( $.proxy(callback, this) ));
+                    targetIsSelf($.proxy(callback, this)));
 
                 topModal.hide();
             } else if (callback) {
@@ -269,7 +273,7 @@
 
                 modal.$backdrop = this.createBackdrop(animate, modal.options.backdropTemplate);
 
-                modal.$backdrop.css('z-index', getzIndex( 'backdrop', this.getOpenModals().length ));
+                modal.$backdrop.css('z-index', getzIndex('backdrop', this.getOpenModals().length));
 
                 if (doAnimate) modal.$backdrop[0].offsetWidth; // force reflow
 
@@ -288,8 +292,10 @@
 
                 var that = this;
 
-                $.support.transition && modal.$element.hasClass('fade')?
-                    modal.$backdrop.one($.support.transition.end, function () { that.removeBackdrop(modal) }) :
+                $.support.transition && modal.$element.hasClass('fade') ?
+                    modal.$backdrop.one($.support.transition.end, function () {
+                        that.removeBackdrop(modal)
+                    }) :
                     that.removeBackdrop(modal);
 
             } else if (callback) {
@@ -297,7 +303,7 @@
             }
         },
 
-        removeSpinner: function(){
+        removeSpinner: function () {
             this.$spinner && this.$spinner.remove();
             this.$spinner = null;
             this.isLoading = false;
@@ -310,7 +316,8 @@
         },
 
         loading: function (callback) {
-            callback = callback || function () { };
+            callback = callback || function () {
+            };
 
             this.$element
                 .toggleClass('modal-open', !this.isLoading || this.hasOpenModal())
@@ -348,7 +355,9 @@
 
                 var that = this;
                 $.support.transition ?
-                    this.$backdropHandle.one($.support.transition.end, function () { that.removeLoading() }) :
+                    this.$backdropHandle.one($.support.transition.end, function () {
+                        that.removeLoading()
+                    }) :
                     that.removeLoading();
 
             } else if (callback) {
@@ -367,7 +376,7 @@
 
         return function (type, pos) {
 
-            if (typeof zIndexFactor === 'undefined'){
+            if (typeof zIndexFactor === 'undefined') {
                 var $baseModal = $('<div class="modal hide" />').appendTo('body'),
                     $baseBackdrop = $('<div class="modal-backdrop hide" />').appendTo('body');
 
@@ -388,9 +397,9 @@
     // make sure the event target is the modal itself in order to prevent
     // other components such as tabsfrom triggering the modal manager.
     // if Boostsrap namespaced events, this would not be needed.
-    function targetIsSelf(callback){
+    function targetIsSelf(callback) {
         return function (e) {
-            if (this === e.target){
+            if (this === e.target) {
                 return callback.apply(this, arguments);
             }
         }
@@ -533,12 +542,12 @@
             var prop = this.options.height ? 'height' : 'max-height',
                 value = this.options.height || this.options.maxHeight;
 
-            if (this.options.width){
+            if (this.options.width) {
                 this.$element.css('width', this.options.width);
 
                 var that = this;
                 this.$element.css('margin-left', function () {
-                    if (/%/ig.test(that.options.width)){
+                    if (/%/ig.test(that.options.width)) {
                         return -(parseInt(that.options.width) / 2) + '%';
                     } else {
                         return -($(this).width() / 2) + 'px';
@@ -553,7 +562,7 @@
                 .css('overflow', '')
                 .css(prop, '');
 
-            if (value){
+            if (value) {
                 this.$element.find('.modal-body')
                     .css('overflow', 'auto')
                     .css(prop, value);
@@ -577,12 +586,12 @@
 
             if (this.isShown && this.options.consumeTab) {
                 this.$element.on('keydown.tabindex.modal', '[data-tabindex]', function (e) {
-                    if (e.keyCode && e.keyCode == 9){
+                    if (e.keyCode && e.keyCode == 9) {
                         var $next = $(this),
                             $rollover = $(this);
 
                         that.$element.find('[data-tabindex]:enabled:not([readonly])').each(function (e) {
-                            if (!e.shiftKey){
+                            if (!e.shiftKey) {
                                 $next = $next.data('tabindex') < $(this).data('tabindex') ?
                                     $next = $(this) :
                                     $rollover = $(this);
@@ -620,9 +629,9 @@
         hideWithTransition: function () {
             var that = this
                 , timeout = setTimeout(function () {
-                    that.$element.off($.support.transition.end);
-                    that.hideModal();
-                }, 500);
+                that.$element.off($.support.transition.end);
+                that.hideModal();
+            }, 500);
 
             this.$element.one($.support.transition.end, function () {
                 clearTimeout(timeout);
@@ -634,7 +643,7 @@
             var prop = this.options.height ? 'height' : 'max-height';
             var value = this.options.height || this.options.maxHeight;
 
-            if (value){
+            if (value) {
                 this.$element.find('.modal-body')
                     .css('overflow', '')
                     .css(prop, '');
@@ -652,7 +661,8 @@
         },
 
         loading: function (callback) {
-            callback = callback || function () {};
+            callback = callback || function () {
+            };
 
             var animate = this.$element.hasClass('fade') ? 'fade' : '';
 
@@ -677,8 +687,10 @@
                 this.$loading.removeClass('in');
 
                 var that = this;
-                $.support.transition && this.$element.hasClass('fade')?
-                    this.$loading.one($.support.transition.end, function () { that.removeLoading() }) :
+                $.support.transition && this.$element.hasClass('fade') ?
+                    this.$loading.one($.support.transition.end, function () {
+                        that.removeLoading()
+                    }) :
                     that.removeLoading();
 
             } else if (callback) {
@@ -694,10 +706,10 @@
             $focusElem.focus();
         },
 
-        attention: function (){
+        attention: function () {
             // NOTE: transitionEnd with keyframes causes odd behaviour
 
-            if (this.options.attentionAnimation){
+            if (this.options.attentionAnimation) {
                 this.$element
                     .removeClass('animated')
                     .removeClass(this.options.attentionAnimation);
@@ -725,13 +737,13 @@
         },
 
         teardown: function () {
-            if (!this.$parent.length){
+            if (!this.$parent.length) {
                 this.$element.remove();
                 this.$element = null;
                 return;
             }
 
-            if (this.$parent !== this.$element.parent()){
+            if (this.$parent !== this.$element.parent()) {
                 this.$element.appendTo(this.$parent);
             }
 
@@ -785,11 +797,11 @@
      * ============== */
 
     $(function () {
-        $(document).off('click.modal').on('click.modal.data-api', '[data-toggle="modal"]', function ( e ) {
+        $(document).off('click.modal').on('click.modal.data-api', '[data-toggle="modal"]', function (e) {
             var $this = $(this),
                 href = $this.attr('href'),
                 $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))), //strip for ie7
-                option = $target.data('modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data());
+                option = $target.data('modal') ? 'toggle' : $.extend({remote: !/#/.test(href) && href}, $target.data(), $this.data());
 
             e.preventDefault();
             $target
@@ -811,7 +823,7 @@
  * Author: John Papa and Hans Fjällemark
  * Project: https://github.com/CodeSeven/toastr
  */
-; (function (define) {
+;(function (define) {
     define(['jquery'], function ($) {
         return (function () {
             var version = '2.0.1';
@@ -886,12 +898,16 @@
 
             function clear($toastElement) {
                 var options = getOptions();
-                if (!$container) { getContainer(options); }
+                if (!$container) {
+                    getContainer(options);
+                }
                 if ($toastElement && $(':focus', $toastElement).length === 0) {
                     $toastElement[options.hideMethod]({
                         duration: options.hideDuration,
                         easing: options.hideEasing,
-                        complete: function () { removeToast($toastElement); }
+                        complete: function () {
+                            removeToast($toastElement);
+                        }
                     });
                     return;
                 }
@@ -899,10 +915,13 @@
                     $container[options.hideMethod]({
                         duration: options.hideDuration,
                         easing: options.hideEasing,
-                        complete: function () { $container.remove(); }
+                        complete: function () {
+                            $container.remove();
+                        }
                     });
                 }
             }
+
             //#endregion
 
             //#region Internal Methods
@@ -1003,7 +1022,7 @@
 
 
                 $toastElement[options.showMethod](
-                    { duration: options.showDuration, easing: options.showEasing, complete: options.onShown }
+                    {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
                 );
                 if (options.timeOut > 0) {
                     intervalId = setTimeout(hideToast, options.timeOut);
@@ -1063,12 +1082,15 @@
                 function stickAround() {
                     clearTimeout(intervalId);
                     $toastElement.stop(true, true)[options.showMethod](
-                        { duration: options.showDuration, easing: options.showEasing }
+                        {duration: options.showDuration, easing: options.showEasing}
                     );
                 }
             }
+
             function getContainer(options) {
-                if (!options) { options = getOptions(); }
+                if (!options) {
+                    options = getOptions();
+                }
                 $container = $('#' + options.containerId);
                 if ($container.length) {
                     return $container;
@@ -1085,7 +1107,9 @@
             }
 
             function removeToast($toastElement) {
-                if (!$container) { $container = getContainer(); }
+                if (!$container) {
+                    $container = getContainer();
+                }
                 if ($toastElement.is(':visible')) {
                     return;
                 }
@@ -1095,6 +1119,7 @@
                     $container.remove();
                 }
             }
+
             //#endregion
 
         })();
@@ -1122,19 +1147,21 @@ toastr.options = {
     "hideMethod": "fadeOut"
 }
 
-var Win=function(){
-    var defaultConfig={
-        title:'提示',
-        url:false,
-        content:'',
-        modelType:'open',
-        yesText:'确定',
-        noText:'关闭',
-        hideClose:true,
-        hideFooter:false,
-        callback:false,// win 打开完成回调函数
-        yesFunc:function(){},// 点击确定按钮触发的方法
-        noFunc:function(){}// 点击取消按钮触发的方法
+var Win = function () {
+    var defaultConfig = {
+        title: '提示',
+        url: false,
+        content: '',
+        modelType: 'open',
+        yesText: '确定',
+        noText: '关闭',
+        hideClose: true,
+        hideFooter: false,
+        callback: false,// win 打开完成回调函数
+        yesFunc: function () {
+        },// 点击确定按钮触发的方法
+        noFunc: function () {
+        }// 点击取消按钮触发的方法
     };
 
     function parseHtml(config) {
@@ -1151,17 +1178,17 @@ var Win=function(){
             if (config.modelType == 'confirm') {
                 tmpl += '<div class="modal-footer">';
                 tmpl += '<a data-dismiss="modal" class="btn btn-default _model-close-btn">' + config.noText + '</a>' +
-                '<a class="btn btn-primary _model-sure-btn">' + config.yesText + '</a>';
+                    '<a class="btn btn-primary _model-sure-btn">' + config.yesText + '</a>';
                 tmpl += '</div>';
             }
         } else {
-            if(!config.hideFooter){
+            if (!config.hideFooter) {
                 tmpl += '<div class="modal-footer">';
                 if (config.modelType == 'alert') {
                     tmpl += '<a class="btn btn-primary _model-sure-btn">' + config.yesText + '</a>';
                 } else {
                     tmpl += '<a data-dismiss="modal" class="btn btn-default _model-close-btn">' + config.noText + '</a>' +
-                    '<a class="btn btn-primary _model-sure-btn">' + config.yesText + '</a>';
+                        '<a class="btn btn-primary _model-sure-btn">' + config.yesText + '</a>';
                 }
                 tmpl += '</div>';
             }
@@ -1170,7 +1197,7 @@ var Win=function(){
         return tmpl;
     }
 
-    var model={};
+    var model = {};
 
     /**
      * 打开model
@@ -1182,44 +1209,44 @@ var Win=function(){
             config.keyboard = false;
             config.backdrop = 'static';
         }
-        var html=parseHtml($.extend({},defaultConfig,config));
-        var obj=$(html);
+        var html = parseHtml($.extend({}, defaultConfig, config));
+        var obj = $(html);
         var _win;
-        if(config.url){
+        if (config.url) {
             obj.find('.modal-body').html('<div style="width: 40%;margin: 10px auto 10px;"><div style="margin-bottom: 5px;" class="progress progress-striped active"><div class="progress-bar progress-bar-success" style="width: 100%"></div></div><div class="text-center">加载页面中。。。</div></div>');
-            _win=obj.modal(config);
-            _win.find('.modal-body').load(config.url, '', function(){
-                _win.modal('layout','123');
-                if(config.callback){
+            _win = obj.modal(config);
+            _win.find('.modal-body').load(config.url, '', function () {
+                _win.modal('layout', '123');
+                if (config.callback) {
                     config.callback();
                 }
             });
-        }else{
-            _win=obj.modal(config);
-            if(config.callback){
+        } else {
+            _win = obj.modal(config);
+            if (config.callback) {
                 config.callback();
             }
         }
 
-        if(config.hideClose){
+        if (config.hideClose) {
             obj.find('.modal-header .close').hide();
         }
 
-        obj.on('click','._model-sure-btn',function(){
-            var _this=this;
-            if(config.yesFunc){
-                var result=config.yesFunc(_this);
-                if(result==false){
+        obj.on('click', '._model-sure-btn', function () {
+            var _this = this;
+            if (config.yesFunc) {
+                var result = config.yesFunc(_this);
+                if (result == false) {
                     return false;
                 }
             }
             _win.modal('hide');
         });
 
-        obj.on('click','._model-close-btn',function(){
-            if(config.noFunc){
-                var result=config.noFunc();
-                if(result==false){
+        obj.on('click', '._model-close-btn', function () {
+            if (config.noFunc) {
+                var result = config.noFunc();
+                if (result == false) {
                     return false;
                 }
             }
@@ -1227,26 +1254,26 @@ var Win=function(){
         return _win;
     };
     model.alert = function (config) {
-        config.modelType='alert';
-        var _win=model.open(config);
+        config.modelType = 'alert';
+        var _win = model.open(config);
         return _win;
     };
 
     model.confirm = function (config) {
-        config.modelType='confirm';
-        var _win=model.open(config);
+        config.modelType = 'confirm';
+        var _win = model.open(config);
         return _win;
     };
-    model.go=function(win){
-        var modelHeight=win.height();
-        var winHeight=$(window).height();
-        var marginTop=0;
-        if(modelHeight>winHeight){
-            marginTop=-winHeight/2;
-        }else{
-            marginTop=-modelHeight/2;
+    model.go = function (win) {
+        var modelHeight = win.height();
+        var winHeight = $(window).height();
+        var marginTop = 0;
+        if (modelHeight > winHeight) {
+            marginTop = -winHeight / 2;
+        } else {
+            marginTop = -modelHeight / 2;
         }
-        win.css("margin-top",marginTop);
+        win.css("margin-top", marginTop);
         return win;
     }
     return model;

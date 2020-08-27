@@ -57,8 +57,7 @@
         if (prompt_window.is(':hidden')) {
             prompt_window.show();
             alert_window.show();
-        }
-        else {
+        } else {
 
         }
         prompt_window.css("opacity", "1");
@@ -130,8 +129,7 @@
         }
         if (cancelFunc) {
             prompt_window.on("click", ".confirm-cancel", cancelFunc);
-        }
-        else {
+        } else {
             prompt_window.on("click", ".confirm-cancel", showWin.closeWin);
         }
     }

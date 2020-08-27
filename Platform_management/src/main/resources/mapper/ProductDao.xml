@@ -6,8 +6,10 @@
 
     <!--新增商品信息-->
     <insert id="insertAddProduct" useGeneratedKeys="true" keyColumn="goods_id" keyProperty="goodsId">
-        INSERT INTO wxb_goods(order_no,customer_id,goods_id,type_id,goods_name,goods_pic1,goods_pic2,goods_pic3,create_time)
-        VALUES (#{orderNo},#{customerId},#{goodsId},#{typeId},#{goodsName},#{goodsPic1},#{goodsPic2},#{goodsPic3},#{createTime})
+        INSERT INTO
+        wxb_goods(order_no,customer_id,goods_id,type_id,goods_name,goods_pic1,goods_pic2,goods_pic3,create_time)
+        VALUES
+        (#{orderNo},#{customerId},#{goodsId},#{typeId},#{goodsName},#{goodsPic1},#{goodsPic2},#{goodsPic3},#{createTime})
     </insert>
 
     <!--新增套餐信息-->
@@ -31,8 +33,8 @@
     <select id="findAllGoods" resultMap="baseResultMap">
         SELECT
         goods_name AS goodsName,
-	    wxb_customer.customer_name AS customerName,
-	    goods_pic1 AS goodsPic1,
+        wxb_customer.customer_name AS customerName,
+        goods_pic1 AS goodsPic1,
         wxb_goods.`goods_id` AS goodsId,
         wxb_goods.`order_no` AS orderNo,
         wxb_goods.`state` AS state,
@@ -56,7 +58,8 @@
     </update>
 
     <select id="findAllCustomer" resultType="com.abc.platform.bean.WxbCustomer">
-        SELECT customer_id AS customerId,state,login_name AS loginName,customer_name AS customerName,LEVEL,qq,phone,createtime FROM wxb_customer
+        SELECT customer_id AS customerId,state,login_name AS loginName,customer_name AS
+        customerName,LEVEL,qq,phone,createtime FROM wxb_customer
     </select>
 
     <insert id="insertUser">
@@ -65,13 +68,15 @@
     </insert>
 
     <select id="findUserById" resultType="com.abc.platform.bean.WxbCustomer">
-        SELECT customer_id AS customerId,state,login_name AS loginName,customer_name AS customerName,LEVEL,wxh,qq,phone,createtime
+        SELECT customer_id AS customerId,state,login_name AS loginName,customer_name AS
+        customerName,LEVEL,wxh,qq,phone,createtime
         FROM wxb_customer
         WHERE customer_id=#{cId}
     </select>
 
     <update id="updateUser">
-        update wxb_customer set customer_name=#{customerName},QQ=#{qq},wxh=#{wxh},phone=#{phone},update_time=#{updateTime},
+        update wxb_customer set
+        customer_name=#{customerName},QQ=#{qq},wxh=#{wxh},phone=#{phone},update_time=#{updateTime},
         login_name=#{loginName},login_pwd=#{loginPwd},state=#{state},level=#{level}
         where customer_id=#{customerId}
     </update>
